@@ -1,6 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-function App () {
+function Books () {
+  const state = useSelector(state => state.Books)
+  console.log(state)
   return (
     <>
       <header className="header">
@@ -17,4 +20,4 @@ function App () {
   )
 }
 
-export default App
+export default Books
