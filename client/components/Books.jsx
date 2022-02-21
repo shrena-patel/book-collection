@@ -1,20 +1,24 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getBooks } from '../actions'
+import Book from './Book'
 
 function Books () {
-  const state = useSelector(state => state.bookReducer)
-  console.log(state[0])
+  const books = useSelector((state) => state.bookReducer)
+  console.log('books.jsx', books)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getBooks())
+  }, [])
 
   return (
     <>
-      <section className="main">
-        <h2>Books: </h2>
-        <p>Title: {state[0].title}</p>
-        <p>Author: {state[0].author} </p>
-        <img className="bookImage" src={state[0].cover}/>
-        <p>Release year: {state[0].year_released} </p>
-      </section>
+      <div className='bookCards'>
+        {books.map((book, i) => <Book data={book} key={i} />
+        )}
+      </div>
     </>
+
   )
 }
 
