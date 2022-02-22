@@ -9,7 +9,7 @@ function Books (props) {
       <div className="card">
         <div className="card-image">
           <figure className="image is-4by3">
-            <img src={book.cover} alt="placeholder book image" />
+            <img src={`/images/${book.cover}`} alt="placeholder book image" />
           </figure>
         </div>
 

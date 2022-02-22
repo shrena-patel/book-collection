@@ -1,5 +1,5 @@
 body {
-  position: absolute;
+  
   top: 0;
   left: 0;
   margin: 0;
@@ -16,5 +16,27 @@ body {
 }
 
 .bookCards {
-  
+  display: flex;
+}
+
+.card {
+  margin: 1.5em;
+}
+
+.card-image:first-child img {
+  max-width: 105px;
+  display: flex;
+  left: 21%;
+}
+
+.add-book {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 3em;
+}
+
+.book-form {
+  margin-top: 4em;
 }

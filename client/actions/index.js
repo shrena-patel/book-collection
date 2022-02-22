@@ -27,7 +27,7 @@ export function getBooks () {
         return null
       })
       .catch(err => {
-        err.status(500).json({err: err.message})
+        err.status(500).json({ err: err.message })
       })
   }
 }
