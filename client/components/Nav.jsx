@@ -56,7 +56,7 @@ function Nav () {
                 </p>
                 <p className="control">
                   <a className="button is-primary" href="https://catalogue.wcl.govt.nz/?section=myAccount">
-                    <span className="icon">
+                    <span className="icon iconBook">
                       <FontAwesomeIcon icon={faBook} />
                     </span>
                     <span>Borrow a book</span>

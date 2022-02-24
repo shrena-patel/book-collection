@@ -57,6 +57,7 @@ input[type=text] {
   border-radius: 5px;
   padding: 0.5em 1em;
   color: white;
+  cursor: pointer;
 }
 
 .button.is-primary {
@@ -65,6 +66,10 @@ input[type=text] {
 
 .icon {
   color: #98b993;
+}
+
+.iconBook {
+  color: white;
 }
 
 .title.is-4 {
