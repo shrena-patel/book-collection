@@ -7,8 +7,8 @@ function AddBook () {
     <>
       <div className="card">
         <div className="card-image add-book">
-          <FontAwesomeIcon icon={faPlus} size='3x' />
-          <p className="title is-3">Add a book</p>
+          <FontAwesomeIcon icon={faPlus} size='3x' className='icon' />
+          <p className="title is-4">Add a book</p>
           {/* <figure className="image is-4by3">
             <img src='images/book-placeholder.jpeg' alt="placeholder book image" width='200px' />
             <FontAwesomeIcon icon={faPlus} />
@@ -25,11 +25,13 @@ function AddBook () {
                 />
               </figure>
             </div> */}
-            <div className="book-form">
-              <p className="subtitle is-6">Title: <input type="text"></input></p>
-              <p className="subtitle is-6">Author: <input type="text"></input></p>
-              <p className="subtitle is-6">Release year: <input type="text"></input></p>
-            </div>
+            <form className="book-form">
+              <input id="title" name="title" type="text" placeholder="Title"></input>
+              <input id="author" name="author" type="text" placeholder="Author"></input>
+              <input id="year" name="year" type="text" placeholder="Release year"></input>
+              <button className="submit-button">Submit</button>
+
+            </form>
           </div>
 
           {/* <div className="content">
