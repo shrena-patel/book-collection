@@ -8,10 +8,18 @@ const connection = knex(config[env])
 // const config = require('./knexfile')[environment]
 // const connection = require('knex')(config)
 
-module.exports = {
-  getBooks
-}
+
 
 function getBooks (db = connection) {
   return db('books').select()
+}
+
+function addNewBook (newBook, db = connection) {
+  return db('books')
+    .insert(newBook)
+}
+
+module.exports = {
+  getBooks,
+  addNewBook
 }

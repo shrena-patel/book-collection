@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux'
+import { addBook } from '../actions'
 
 function AddBook () {
+  const dispatch = useDispatch()
+
+  const [newBook, setNewBook] = useState({
+    title: '',
+    author: '',
+    year_released: ''
+  })
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault()
+    console.log(newBook)
+    dispatch(addBook(newBook))
+  }
+
+  const handleChange = (evt) => {
+    setNewBook({
+      ...newBook,
+      [evt.target.name]: evt.target.value
+    })
+  }
   return (
     <>
       <div className="card">
@@ -25,10 +47,13 @@ function AddBook () {
                 />
               </figure>
             </div> */}
-            <form className="book-form">
-              <input id="title" name="title" type="text" placeholder="Title"></input>
-              <input id="author" name="author" type="text" placeholder="Author"></input>
-              <input id="year" name="year" type="text" placeholder="Release year"></input>
+            <form onSubmit={handleSubmit} className="book-form">
+              <label htmlFor='title'></label>
+              <input id="title" name="title" type="text" placeholder="Title" onChange={handleChange}></input>
+              <label htmlFor='author'></label>
+              <input id="author" name="author" type="text" placeholder="Author" onChange={handleChange}></input>
+              <label htmlFor='year_released'></label>
+              <input id="year_released" name="year_released" type="text" placeholder="Release year" onChange={handleChange}></input>
               <button className="submit-button">Submit</button>
 
             </form>

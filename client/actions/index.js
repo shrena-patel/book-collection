@@ -1,6 +1,7 @@
-import { fetchBooks } from '../apis/index'
+import { fetchBooks, addNewBook } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
+export const ADD_BOOK = 'ADD_BOOK'
 
 export function receiveBooks (arr) {
   return {
@@ -8,6 +9,13 @@ export function receiveBooks (arr) {
     books: arr || null
   }
 }
+
+// export function addBook (book) {
+//   return {
+//     type: ADD_BOOK,
+//     book: book
+//   }
+// }
 
 // export function receiveBooks (books) {
 //     return {
@@ -28,6 +36,19 @@ export function getBooks () {
       })
       .catch(err => {
         err.status(500).json({ err: err.message })
+      })
+  }
+}
+
+export function addBook (newBook) {
+  return (dispatch) => {
+    addNewBook(newBook)
+      .then(result => {
+        dispatch(receiveBooks(result))
+        return null
+      })
+      .catch(err => {
+        console.log(err.message)
       })
   }
 }

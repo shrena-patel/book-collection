@@ -6,3 +6,11 @@ export function fetchBooks () {
       return res.body
     })
 }
+
+export function addNewBook (newBook) {
+  return request.post('/api/v1/books')
+    .send(newBook)
+    .then(res => {
+      return res.body
+    })
+}

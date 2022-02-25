@@ -2,13 +2,14 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBook, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+
 function Nav () {
   return (
     <>
       <nav className="navbar is-transparent">
         <div className="navbar-brand">
           <Link to='/' className="navbar-item">
-            <p className="subtitle is-3">BOOKS</p>
+            <p className="subtitle is-3">BOOKS.</p>
           </Link>
           <div className="navbar-burger" data-target="navbarExampleTransparentExample">
             <span></span>
