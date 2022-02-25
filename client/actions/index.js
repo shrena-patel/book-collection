@@ -10,10 +10,10 @@ export function receiveBooks (arr) {
   }
 }
 
-export function addNewBookAction (book) {
+export function addNewBookAction (newBook) {
   return {
     type: ADD_BOOK,
-    book: book
+    newBook
   }
 }
 
@@ -30,21 +30,23 @@ export function getBooks () {
   return (dispatch) => {
     fetchBooks()
       .then(res => {
-        console.log('res action', res)
+        console.log('res in getBooks', res)
         dispatch(receiveBooks(res))
         return null
       })
       .catch(err => {
-        err.status(500).json({ err: err.message })
+        console.log(err.message)
       })
   }
 }
 
 export function addBook (newBook) {
   return (dispatch) => {
+    console.log('THUNK', newBook)
     addNewBook(newBook)
       .then(result => {
-        dispatch(receiveBooks(result))
+        console.log('res in addBook', result)
+        dispatch(addNewBookAction(result))
         return null
       })
       .catch(err => {

@@ -7,7 +7,7 @@ function bookReducer (state = initialState, action) {
     // case comes from action file
     case 'RECEIVE_BOOKS':
       return action.books
-    case 'ADD_BOOKS':
+    case 'ADD_BOOK':
       return [...state, action.newBook]
     default:
       return state

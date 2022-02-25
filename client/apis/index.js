@@ -8,6 +8,7 @@ export function fetchBooks () {
 }
 
 export function addNewBook (newBook) {
+  console.log('api', newBook)
   return request.post('/api/v1/books')
     .send(newBook)
     .then(res => {

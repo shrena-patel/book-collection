@@ -11,7 +11,7 @@ function AddBook () {
     title: '',
     author: '',
     cover: '',
-    year_released: 'images/book-placeholder.jpeg'
+    year_released: ''
   })
 
   const handleSubmit = (evt) => {
@@ -26,7 +26,8 @@ function AddBook () {
       [evt.target.name]: evt.target.value
     })
   }
-
+  // when redux state changes (i/e when the form is submitted), clear the form
+  // use useSelector and useEffect
   useEffect(() => {
 
   }, [newBook])

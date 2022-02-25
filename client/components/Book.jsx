@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Books (props) {
-  console.log('props.data', props.data)
   const book = props.data
   let bookCoverUrl = null
   if (book.cover === null || book.cover === '') {

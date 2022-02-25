@@ -16,8 +16,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const book = req.body
   db.addNewBook(book)
-    .then(() => {
-      db.getBooks()
+    .then((ids) => {
+      book.id = ids[0]
+      res.json(book)
       return null
     })
     .catch(err => {
