@@ -15,9 +15,9 @@ function Books () {
   return (
     <>
       <div className='bookCards'>
+        <AddBook />
         {books.map((book, i) => <Book data={book} key={i} />
         )}
-        <AddBook />
       </div>
     </>
 

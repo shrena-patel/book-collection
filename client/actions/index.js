@@ -10,12 +10,12 @@ export function receiveBooks (arr) {
   }
 }
 
-// export function addBook (book) {
-//   return {
-//     type: ADD_BOOK,
-//     book: book
-//   }
-// }
+export function addNewBookAction (book) {
+  return {
+    type: ADD_BOOK,
+    book: book
+  }
+}
 
 // export function receiveBooks (books) {
 //     return {

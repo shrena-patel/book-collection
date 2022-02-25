@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
@@ -10,7 +10,8 @@ function AddBook () {
   const [newBook, setNewBook] = useState({
     title: '',
     author: '',
-    year_released: ''
+    cover: '',
+    year_released: 'images/book-placeholder.jpeg'
   })
 
   const handleSubmit = (evt) => {
@@ -25,6 +26,10 @@ function AddBook () {
       [evt.target.name]: evt.target.value
     })
   }
+
+  useEffect(() => {
+
+  }, [newBook])
   return (
     <>
       <div className="card">

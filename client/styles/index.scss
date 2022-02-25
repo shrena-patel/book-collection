@@ -17,13 +17,25 @@ body {
 
 .bookCards {
   display: flex;
-  padding: 3em;
+  flex-wrap: wrap;
+  padding-top: 3em;
+}
+
+.media {
+  justify-content: center;
 }
 
 .card {
   margin: 1.5em;
+  width: 14em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.card-footer-item {
+  color: #4e6a4a;
+}
 .card-image:first-child img {
   max-width: 105px;
   display: flex;

@@ -3,13 +3,19 @@ import React from 'react'
 function Books (props) {
   console.log('props.data', props.data)
   const book = props.data
+  let bookCoverUrl = null
+  if (book.cover === null || book.cover === '') {
+    bookCoverUrl = '/images/book-placeholder.jpeg'
+  } else {
+    bookCoverUrl = `/images/${book.cover}`
+  }
 
   return (
     <>
       <div className="card">
         <div className="card-image">
           <figure className="image is-4by3">
-            <img src={`/images/${book.cover}`} alt="placeholder book image" />
+            <img src={bookCoverUrl} alt="placeholder book image" />
           </figure>
         </div>
 
