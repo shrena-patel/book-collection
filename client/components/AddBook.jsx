@@ -14,10 +14,18 @@ function AddBook () {
     year_released: ''
   })
 
+  const handleResetForm = () => {
+    const books = Array.from(document.querySelectorAll('input')).forEach(
+      input => (input.value = '')
+    )
+    setNewBook(books)
+  }
+
   const handleSubmit = (evt) => {
     evt.preventDefault()
     console.log(newBook)
     dispatch(addBook(newBook))
+    handleResetForm()
   }
 
   const handleChange = (evt) => {
