@@ -15,3 +15,12 @@ export function addNewBook (newBook) {
       return res.body
     })
 }
+
+export function deleteBookApi (bookId) {
+  console.log('api', bookId)
+  return request.del(`/api/v1/books/${bookId}`)
+    .then(res => {
+      console.log('res in api', res)
+      return res.body
+    })
+}

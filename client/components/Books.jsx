@@ -6,7 +6,7 @@ import AddBook from './AddBook'
 
 function Books () {
   const books = useSelector((state) => state.bookReducer)
-  console.log(' add - books.jsx', books)
+  console.log('books in book.jsx', books)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getBooks())

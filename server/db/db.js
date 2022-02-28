@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const knex = require('knex')
 const config = require('./knexfile')
 const env = process.env.NODE_ENV || 'development'
@@ -19,7 +20,14 @@ function addNewBook (newBook, db = connection) {
     .insert(newBook)
 }
 
+function deleteBook (id, db = connection) {
+  return db('books')
+  .delete()
+  .where('id', id)
+}
+
 module.exports = {
   getBooks,
-  addNewBook
+  addNewBook,
+  deleteBook
 }

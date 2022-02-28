@@ -9,6 +9,8 @@ function bookReducer (state = initialState, action) {
       return action.books
     case 'ADD_BOOK':
       return [...state, action.newBook]
+    case 'DEL_BOOK':
+      return state.filter((book) => book.id !== action.bookId)
     default:
       return state
   }

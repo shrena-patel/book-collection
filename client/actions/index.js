@@ -1,7 +1,8 @@
-import { fetchBooks, addNewBook } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const ADD_BOOK = 'ADD_BOOK'
+export const DEL_BOOK = 'DEL_BOOK'
 
 export function receiveBooks (arr) {
   return {
@@ -17,12 +18,12 @@ export function addNewBookAction (newBook) {
   }
 }
 
-// export function receiveBooks (books) {
-//     return {
-//         type: RECEIVE_BOOKS,
-//         books: books.map(book => book.data)
-//     }
-// }
+export function deleteBookAction (bookId) {
+  return {
+    type: DEL_BOOK,
+    bookId
+  }
+}
 
 // THUNK
 
@@ -30,7 +31,6 @@ export function getBooks () {
   return (dispatch) => {
     fetchBooks()
       .then(res => {
-        console.log('res in getBooks', res)
         dispatch(receiveBooks(res))
         return null
       })
@@ -42,11 +42,24 @@ export function getBooks () {
 
 export function addBook (newBook) {
   return (dispatch) => {
-    console.log('THUNK', newBook)
     addNewBook(newBook)
       .then(result => {
-        console.log('res in addBook', result)
         dispatch(addNewBookAction(result))
+        return null
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  }
+}
+
+export function deleteBookThunk (bookId) {
+  console.log('thunk 1', bookId)
+  return (dispatch) => {
+    deleteBookApi(bookId)
+      .then(result => {
+        console.log('thunk2', result)
+        dispatch(deleteBookAction(result))
         return null
       })
       .catch(err => {
