@@ -1,3 +1,4 @@
+/* eslint-disable promise/no-nesting */
 const express = require('express')
 const db = require('../db/db')
 const router = express.Router()
@@ -28,11 +29,12 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
-  return db.deleteBook(id)
-    .then((result) => {
-      console.log('routes result', result)
-      res.sendStatus(200)
-      return null
+  db.deleteBook(id)
+    .then(() => {
+      db.getBooks()
+        .then(updatedBooks => {
+          res.json(updatedBooks)
+        })
     })
     .catch(err => {
       res.status(500).json({ error: err.message})

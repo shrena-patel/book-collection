@@ -8,7 +8,6 @@ export function fetchBooks () {
 }
 
 export function addNewBook (newBook) {
-  console.log('api', newBook)
   return request.post('/api/v1/books')
     .send(newBook)
     .then(res => {
@@ -17,7 +16,7 @@ export function addNewBook (newBook) {
 }
 
 export function deleteBookApi (bookId) {
-  console.log('api', bookId)
+  console.log('api delete', bookId)
   return request.del(`/api/v1/books/${bookId}`)
     .then(res => {
       console.log('res in api', res)

@@ -59,7 +59,7 @@ export function deleteBookThunk (bookId) {
     deleteBookApi(bookId)
       .then(result => {
         console.log('thunk2', result)
-        dispatch(deleteBookAction(result))
+        dispatch(receiveBooks(result))
         return null
       })
       .catch(err => {
