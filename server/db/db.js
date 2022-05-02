@@ -9,10 +9,14 @@ const connection = knex(config[env])
 // const config = require('./knexfile')[environment]
 // const connection = require('knex')(config)
 
-
-
 function getBooks (db = connection) {
   return db('books').select()
+}
+
+function getBookById (id, db = connection) {
+  return db('books')
+  .select()
+  .where('id', id)
 }
 
 function addNewBook (newBook, db = connection) {
@@ -28,6 +32,7 @@ function deleteBook (id, db = connection) {
 
 module.exports = {
   getBooks,
+  getBookById,
   addNewBook,
   deleteBook
 }

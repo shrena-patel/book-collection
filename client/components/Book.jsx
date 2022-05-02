@@ -1,9 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-
+import { Link } from 'react-router-dom'
 import { deleteBookThunk } from '../actions'
+import { fetchBookById } from '../apis/index'
 
-function Books (props) {
+function Book (props) {
   const book = props.data
   const dispatch = useDispatch()
 
@@ -12,6 +13,12 @@ function Books (props) {
     bookCoverUrl = '/images/book-placeholder.jpeg'
   } else {
     bookCoverUrl = `/images/${book.cover}`
+  }
+
+  const getBookInfo = () => {
+    const id = book.id
+    console.log('iddd', id)
+    fetchBookById(id)
   }
 
   return (
@@ -25,7 +32,7 @@ function Books (props) {
         <div className="card-content">
           <div className="media">
             <div className="media-content">
-              <p className="title is-4">{book.title}</p>
+             <Link to={`/book/${book.id}`}> <p className="title is-4" onClick={getBookInfo}>{book.title}</p></Link>
               <p className="subtitle is-6">{book.author}</p>
             </div>
           </div>
@@ -45,4 +52,4 @@ function Books (props) {
   )
 }
 
-export default Books
+export default Book

@@ -7,6 +7,13 @@ export function fetchBooks () {
     })
 }
 
+export function fetchBookById (bookId) {
+  return request.get(`/api/v1/books/book/${bookId}`)
+    .then(res => {
+      return res.body
+    })
+}
+
 export function addNewBook (newBook) {
   return request.post('/api/v1/books')
     .send(newBook)

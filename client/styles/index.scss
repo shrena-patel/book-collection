@@ -85,11 +85,24 @@ input[type=text] {
   color: #98b993;
 }
 
+// .icon:hover {
+//   color:  #4e6a4a;
+// }
+
 .iconBook {
   color: white;
 }
 
 .title.is-4 {
+  color: #4e6a4a;
+}
+
+.navbar-link:not(.is-arrowless)::after {
+  border-color: #4e6a4a;
+}
+
+.navbar-link:hover,
+a.navbar-item:hover {
   color: #4e6a4a;
 }
 

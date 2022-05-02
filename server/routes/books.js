@@ -27,6 +27,18 @@ router.post('/', (req, res) => {
     })
 })
 
+router.get('/book/:id', (req, res) => {
+  const bookId = Number(req.params.id)
+  db.getBookById(bookId)
+    .then((book) => {
+      res.json(book)
+      return null
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+})
+
 router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.deleteBook(id)
