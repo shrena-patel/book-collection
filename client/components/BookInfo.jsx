@@ -11,8 +11,17 @@ function BookInfo () {
   console.log(bookById)
   return (
     <>
-      <h1>{bookById.title}</h1>
-      <p>{bookById.author}</p>
+      <div className="card infoCard">
+        <div className="card-content">
+          <div className="content">
+            <h1 className="title is-4">{bookById.title}</h1>
+            <p className="subtitle is-6">{bookById.author}</p>
+          </div>
+          <p>Reviews:</p>
+        <input type="text"></input>
+        </div>
+        
+      </div>
     </>
   )
 }
