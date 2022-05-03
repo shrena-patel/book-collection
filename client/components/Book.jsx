@@ -2,7 +2,14 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteBookThunk } from '../actions'
-import { fetchBookById } from '../apis/index'
+import { getBookCoverImage } from '../apis/index'
+
+// for the edit functionality
+// when you click on the edit button, it should display an edit book card in same place
+// where book is rendered in Books.jsx, could have a ternary
+// that check if state of 'editbook' is set to true or false,
+// if it's true, set display the Book.jsx component, otherwise display the EditBook.jsx component in it's place
+
 
 function Book (props) {
   const book = props.data
@@ -15,11 +22,11 @@ function Book (props) {
     bookCoverUrl = `/images/${book.cover}`
   }
 
-  const getBookInfo = () => {
-    const id = book.id
-    console.log('iddd', id)
-    fetchBookById(id)
-  }
+  // const getBookInfo = () => {
+  //   console.log('hello')
+  //   console.log(book.isbn)
+  //   getBookCoverImage(book.isbn)
+  // }
 
   return (
     <>
@@ -32,7 +39,7 @@ function Book (props) {
         <div className="card-content">
           <div className="media">
             <div className="media-content">
-             <Link to={`/book/${book.id}`}> <p className="title is-4" onClick={getBookInfo}>{book.title}</p></Link>
+              <Link to={`/book/${book.id}`}> <p className="title is-4">{book.title}</p></Link>
               <p className="subtitle is-6">{book.author}</p>
             </div>
           </div>

@@ -4,6 +4,17 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { addBook } from '../actions'
 
+// get isbn API call working to get the cover art for each book
+// user enters isbn number
+// set the local state to include the isbn
+// dispatch an action that will make the api call to get the cover art
+// set the cover art in the redux global state
+// save the artwork in the database
+// render the art from this api call
+
+// or, could not have artwork on main page,
+// then do the api call in the useEffect onload of the BookInfo component
+
 function AddBook () {
   const dispatch = useDispatch()
 
@@ -11,7 +22,8 @@ function AddBook () {
     title: '',
     author: '',
     cover: '',
-    year_released: ''
+    year_released: '',
+    isbn: ''
   })
 
   const handleResetForm = () => {
@@ -54,6 +66,8 @@ function AddBook () {
               <input id="author" name="author" type="text" placeholder="Author" onChange={handleChange}></input>
               <label htmlFor='year_released'></label>
               <input id="year_released" name="year_released" type="text" placeholder="Release year" onChange={handleChange}></input>
+              <label htmlFor='isbn'></label>
+              <input id="isbn" name="isbn" type="text" placeholder="ISBN" onChange={handleChange}></input>
               <button className="submit-button">Submit</button>
             </form>
           </div>

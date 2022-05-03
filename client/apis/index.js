@@ -30,3 +30,11 @@ export function deleteBookApi (bookId) {
       return res.body
     })
 }
+
+export function getBookCoverImage (isbn) {
+  return request.get(`https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`)
+    .then(res => {
+      console.log('book cover res in api', res)
+      return res.body
+    })
+}

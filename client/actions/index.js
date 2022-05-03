@@ -1,4 +1,4 @@
-import { fetchBooks, addNewBook, deleteBookApi } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const ADD_BOOK = 'ADD_BOOK'
@@ -32,6 +32,19 @@ export function getBooks () {
     fetchBooks()
       .then(res => {
         dispatch(receiveBooks(res))
+        return null
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  }
+}
+
+export function getBookImageThunk (isbn) {
+  return (dispatch) => {
+    getBookCoverImage()
+      .then(res => {
+        console.log(res.text)
         return null
       })
       .catch(err => {
