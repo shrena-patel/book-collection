@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { getBookImageThunk } from '../actions'
 
 // in here,
-// in useeffect, so on load, dispatch an action to get the book cover images 
+// in useeffect, so on load, dispatch an action to get the book cover images
 // in the actions folder, make an action, and a thunk - the api call goes in the thunk
 // this saves everything to the global state
 // then use useSelector to get the image url from global state
@@ -25,12 +25,12 @@ function BookInfo () {
 
   useEffect(() => {
     console.log('use effect bby')
-    getBookImageThunk(bookById.isbn)
-    // dispatch(getBooks())
+    dispatch(getBookImageThunk(bookById.isbn))
+    // dispatch(getBookImageThunk('161620818X'))
+    // dispatch(getBooks())161620818X
   }, [])
 
-  
-  console.log(bookById)
+  console.log(bookById, 'bookbyid')
   return (
     <>
       <div className="card infoCard">
@@ -40,9 +40,8 @@ function BookInfo () {
             <p className="subtitle is-6">{bookById.author}</p>
           </div>
           <p>Reviews:</p>
-        <input type="text"></input>
+          <input type="text"></input>
         </div>
-        
       </div>
     </>
   )

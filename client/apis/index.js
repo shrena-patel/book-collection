@@ -34,7 +34,10 @@ export function deleteBookApi (bookId) {
 export function getBookCoverImage (isbn) {
   return request.get(`https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`)
     .then(res => {
-      console.log('book cover res in api', res)
-      return res.body
+      console.log('book cover res in api', typeof res.req.url)
+      const url = res.req.url
+      url.split(' ').join('')
+      console.log('url in api', url)
+      return url
     })
 }

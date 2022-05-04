@@ -3,6 +3,7 @@
 const initialState = []
 
 function bookReducer (state = initialState, action) {
+  console.log(state, 'state in reducer')
   switch (action.type) {
     // case comes from action file
     case 'RECEIVE_BOOKS':
@@ -11,6 +12,13 @@ function bookReducer (state = initialState, action) {
       return [...state, action.newBook]
     case 'DEL_BOOK':
       return state.filter((book) => book.id !== action.bookId)
+    case 'RECEIVE_COVER':
+      // in here need to return state, then if make book.coverimage = action.cover
+      return state.map(book => {
+        book.cover = action.cover
+        console.log(state, 'statei in reducer2')
+        return state
+      })
     default:
       return state
   }
