@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 // import { getBookCoverImage } from '../apis'
@@ -21,23 +21,25 @@ function BookInfo () {
   const dispatch = useDispatch()
   const { id } = useParams()
   const books = useSelector(globalState => globalState.bookReducer)
-  const bookById = books.find(book => book.id === Number(id))
-
+  const [thisBook, setThisBook] = useState()
   useEffect(() => {
-    console.log('use effect bby')
+    const bookById = books.find(book => book.id === Number(id))
+
+    console.log(bookById, 'bookbyid')
     dispatch(getBookImageThunk(bookById.isbn))
+    setThisBook(bookById)
     // dispatch(getBookImageThunk('161620818X'))
     // dispatch(getBooks())161620818X
+
   }, [])
 
-  console.log(bookById, 'bookbyid')
   return (
     <>
       <div className="card infoCard">
         <div className="card-content">
           <div className="content">
-            <h1 className="title is-4">{bookById.title}</h1>
-            <p className="subtitle is-6">{bookById.author}</p>
+            {/* <h1 className="title is-4">{thisBook.title}</h1>
+            <p className="subtitle is-6">{thisBook.author}</p> */}
           </div>
           <p>Reviews:</p>
           <input type="text"></input>

@@ -17,7 +17,7 @@ function bookReducer (state = initialState, action) {
       return state.map(book => {
         book.cover = action.cover
         console.log(state, 'statei in reducer2')
-        return state
+        return [...state]
       })
     default:
       return state

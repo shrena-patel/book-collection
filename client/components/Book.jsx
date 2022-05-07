@@ -2,14 +2,12 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteBookThunk } from '../actions'
-import { getBookCoverImage } from '../apis/index'
 
 // for the edit functionality
 // when you click on the edit button, it should display an edit book card in same place
 // where book is rendered in Books.jsx, could have a ternary
 // that check if state of 'editbook' is set to true or false,
 // if it's true, set display the Book.jsx component, otherwise display the EditBook.jsx component in it's place
-
 
 function Book (props) {
   const book = props.data
@@ -21,12 +19,6 @@ function Book (props) {
   } else {
     bookCoverUrl = `/images/${book.cover}`
   }
-
-  // const getBookInfo = () => {
-  //   console.log('hello')
-  //   console.log(book.isbn)
-  //   getBookCoverImage(book.isbn)
-  // }
 
   return (
     <>
