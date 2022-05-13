@@ -22,17 +22,17 @@ function BookInfo () {
   const { id } = useParams()
   const books = useSelector(globalState => globalState.bookReducer)
   const [thisBook, setThisBook] = useState()
+const bookById = books.find(book => book.id === Number(id))
   useEffect(() => {
-    const bookById = books.find(book => book.id === Number(id))
-
+    
     console.log(bookById, 'bookbyid')
     dispatch(getBookImageThunk(bookById.isbn))
     setThisBook(bookById)
     // dispatch(getBookImageThunk('161620818X'))
     // dispatch(getBooks())161620818X
-
   }, [])
 
+  console.log(thisBook, 'thisboook')
   return (
     <>
       <div className="card infoCard">
@@ -40,6 +40,7 @@ function BookInfo () {
           <div className="content">
             {/* <h1 className="title is-4">{thisBook.title}</h1>
             <p className="subtitle is-6">{thisBook.author}</p> */}
+            {/* <img src={thisBook.cover}/> */}
           </div>
           <p>Reviews:</p>
           <input type="text"></input>

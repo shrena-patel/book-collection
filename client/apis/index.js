@@ -37,7 +37,7 @@ export function getBookCoverImage (isbn) {
       console.log('book cover res in api', typeof res.req.url)
       const url = res.req.url
       url.split(' ').join('')
-      console.log('url in api', url)
+      console.log('the edited url in api', url)
       return url
     })
 }
