@@ -3,7 +3,7 @@
 const initialState = []
 
 function bookReducer (state = initialState, action) {
-  console.log(state, 'state in reducer')
+  // console.log(state, 'state in reducer')
   switch (action.type) {
     // case comes from action file
     case 'RECEIVE_BOOKS':

@@ -41,3 +41,6 @@ export function getBookCoverImage (isbn) {
       return url
     })
 }
+
+const spans = Array.prototype.slice.call(document.querySelectorAll('.dom'))
+spans.forEach(function (span) { span.innerHTML = 'HTML5 Document Object Model' })

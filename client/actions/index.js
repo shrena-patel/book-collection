@@ -52,7 +52,7 @@ export function getBookImageThunk (isbn) {
   return (dispatch) => {
     getBookCoverImage(isbn)
       .then(res => {
-        //dispatch() something instead of console.log
+        // dispatch() something instead of console.log
         console.log(res, 'res in action')
         dispatch(receiveBookCover(res))
         return null

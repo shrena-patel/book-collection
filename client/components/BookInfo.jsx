@@ -22,9 +22,9 @@ function BookInfo () {
   const { id } = useParams()
   const books = useSelector(globalState => globalState.bookReducer)
   const [thisBook, setThisBook] = useState()
-const bookById = books.find(book => book.id === Number(id))
+  const bookById = books.find(book => book.id === Number(id))
+
   useEffect(() => {
-    
     console.log(bookById, 'bookbyid')
     dispatch(getBookImageThunk(bookById.isbn))
     setThisBook(bookById)
@@ -32,15 +32,20 @@ const bookById = books.find(book => book.id === Number(id))
     // dispatch(getBooks())161620818X
   }, [])
 
-  console.log(thisBook, 'thisboook')
+  // something weird happening so the new book cover isn't coming through
+  // in the book reducer in redux dev tools, after clicking on the individual book
+  // the bookReducer is an array of objects within arrays, which is different to how it looks to begin with
+
+  console.log(thisBook, 'TYPEOFthisboook') // this works
+  // console.log(thisBook.cover, 'TYPEOFthisboook') // this doesn't work
   return (
     <>
       <div className="card infoCard">
         <div className="card-content">
           <div className="content">
             {/* <h1 className="title is-4">{thisBook.title}</h1>
-            <p className="subtitle is-6">{thisBook.author}</p> */}
-            {/* <img src={thisBook.cover}/> */}
+            <p className="subtitle is-6">{thisBook.author}</p> 
+            <img src={thisBook.cover}/><p>book cover image</p> */}
           </div>
           <p>Reviews:</p>
           <input type="text"></input>
