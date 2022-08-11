@@ -32,20 +32,20 @@ function BookInfo () {
     // dispatch(getBooks())161620818X
   }, [])
 
-  // something weird happening so the new book cover isn't coming through
-  // in the book reducer in redux dev tools, after clicking on the individual book
-  // the bookReducer is an array of objects within arrays, which is different to how it looks to begin with
+  // ****************************************
+  // 11/08/22 Next: need to save the cover image to the database, so when you go 
+  // back to the homepage after clicking on the book title, the placeholder image 
+  // for that book has been updated
+  // ****************************************
 
-  console.log(thisBook, 'TYPEOFthisboook') // this works
-  // console.log(thisBook.cover, 'TYPEOFthisboook') // this doesn't work
   return (
     <>
       <div className="card infoCard">
         <div className="card-content">
           <div className="content">
-            {/* <h1 className="title is-4">{thisBook.title}</h1>
-            <p className="subtitle is-6">{thisBook.author}</p> 
-            <img src={thisBook.cover}/><p>book cover image</p> */}
+            <h1 className="title is-4">{bookById?.title}</h1>
+            <p className="subtitle is-6">{bookById?.author}</p>
+            <img src={bookById?.cover}/>
           </div>
           <p>Reviews:</p>
           <input type="text"></input>

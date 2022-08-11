@@ -15,9 +15,12 @@ function bookReducer (state = initialState, action) {
     case 'RECEIVE_COVER':
       // in here need to return state, then if make book.coverimage = action.cover
       return state.map(book => {
-        book.cover = action.cover
-        console.log(state, 'statei in reducer2')
-        return [...state]
+        // if the isbn of the action matches the isbn of the book, then do the below
+        if (action.isbn === book.isbn) {
+          book.cover = action.cover
+        }
+        // Only want to return the individual book rather than the whole state
+        return book
       })
     default:
       return state

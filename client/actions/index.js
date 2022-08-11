@@ -12,10 +12,11 @@ export function receiveBooks (arr) {
   }
 }
 
-export function receiveBookCover (cover) {
+export function receiveBookCover (cover, isbn) {
   return {
     type: RECEIVE_COVER,
-    cover: cover || null
+    cover: cover || null,
+    isbn: isbn
   }
 }
 
@@ -54,7 +55,7 @@ export function getBookImageThunk (isbn) {
       .then(res => {
         // dispatch() something instead of console.log
         console.log(res, 'res in action')
-        dispatch(receiveBookCover(res))
+        dispatch(receiveBookCover(res, isbn))
         return null
       })
       .catch(err => {
