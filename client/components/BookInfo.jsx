@@ -33,8 +33,8 @@ function BookInfo () {
   }, [])
 
   // ****************************************
-  // 11/08/22 Next: need to save the cover image to the database, so when you go 
-  // back to the homepage after clicking on the book title, the placeholder image 
+  // 11/08/22 Next: need to save the cover image to the database, so when you go
+  // back to the homepage after clicking on the book title, the placeholder image
   // for that book has been updated
   // ****************************************
 
