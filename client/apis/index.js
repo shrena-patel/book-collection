@@ -42,5 +42,13 @@ export function getBookCoverImage (isbn) {
     })
 }
 
+export function updateBookCoverImage (cover) {
+  return request.patch('/api/v1/books/')
+    .send(cover)
+    .then(res => {
+      return res.body
+    })
+}
+
 const spans = Array.prototype.slice.call(document.querySelectorAll('.dom'))
 spans.forEach(function (span) { span.innerHTML = 'HTML5 Document Object Model' })

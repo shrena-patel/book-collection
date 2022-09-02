@@ -30,9 +30,16 @@ function deleteBook (id, db = connection) {
   .where('id', id)
 }
 
+function updateBook (updateBook, db = connection) {
+  return db('books')
+  .update(updateBook)
+  .where('id', updateBook.id)
+}
+
 module.exports = {
   getBooks,
   getBookById,
   addNewBook,
-  deleteBook
+  deleteBook,
+  updateBook
 }

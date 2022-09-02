@@ -20,6 +20,13 @@ function Book (props) {
     bookCoverUrl = `/images/${book.cover}`
   }
 
+  const editBook = () => {
+    // switch to edit component for that particular book
+    // then in the edit book component, when the submit button is clicked, it switches back to
+    // this component.
+
+    console.log('edit this book!')
+  }
   return (
     <>
       <div className="card">
@@ -43,7 +50,7 @@ function Book (props) {
         </div>
         <footer className="card-footer">
           <a href="#" className="card-footer-item">Like</a>
-          <a href="#" className="card-footer-item">Edit</a>
+          <a href="#" className="card-footer-item" onClick={() => editBook()}>Edit</a>
           <a href="#" className="card-footer-item" onClick={() => dispatch(deleteBookThunk(book.id))}>Delete</a>
         </footer>
       </div>

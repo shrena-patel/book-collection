@@ -110,3 +110,17 @@ a.navbar-item:hover {
   color: #4e6a4a;
 }
 
+.submitButton {
+  all: unset;
+  cursor: pointer;
+  margin-left: 1.75em;
+  border: 2px solid #98b993;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+}
+
+.submitButton:focus,
+.submitButton:hover {
+  outline: #4e6a4a 5px auto;
+}
+

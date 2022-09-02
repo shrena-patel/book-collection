@@ -1,9 +1,10 @@
-import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, updateBookCoverImage } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const ADD_BOOK = 'ADD_BOOK'
 export const DEL_BOOK = 'DEL_BOOK'
 export const RECEIVE_COVER = 'RECEIVE_COVER'
+export const UPDATE_COVER = 'UPDATE_COVER'
 
 export function receiveBooks (arr) {
   return {
@@ -34,6 +35,14 @@ export function deleteBookAction (bookId) {
   }
 }
 
+export function updateBookCoverAction (id, cover) {
+  return {
+    type: UPDATE_COVER,
+    id: id,
+    cover: cover || null
+  }
+}
+
 // THUNK
 
 export function getBooks () {
@@ -56,6 +65,8 @@ export function getBookImageThunk (isbn) {
         // dispatch() something instead of console.log
         console.log(res, 'res in action')
         dispatch(receiveBookCover(res, isbn))
+        console.log('!!!res:', res, 'isbn:', isbn)
+        // res is the cover url, use that to save to the db where the isbn matches
         return null
       })
       .catch(err => {
@@ -89,5 +100,13 @@ export function deleteBookThunk (bookId) {
       .catch(err => {
         console.log(err.message)
       })
+  }
+}
+
+export function updateBookCoverThunk (id, url) {
+  console.log('updatethunk', id, url)
+  return (dispatch) => {
+    // api
+    //then dispatch updateBookCoverAction
   }
 }

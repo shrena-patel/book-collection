@@ -22,6 +22,8 @@ function bookReducer (state = initialState, action) {
         // Only want to return the individual book rather than the whole state
         return book
       })
+    case 'UPDATE_BOOK':
+      return action.books
     default:
       return state
   }

@@ -27,6 +27,25 @@ router.post('/', (req, res) => {
     })
 })
 
+router.patch('/', (req, res) => {
+  const bookUpdate = req.body
+  db.updateBook(bookUpdate)
+    .then(() => {
+      db.getBooks()
+        .then(updatedBooks => {
+          res.json(updatedBooks)
+          return null
+        })
+        .catch(err => {
+          res.status(500).json({ error: err.message })
+        })
+      return null
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+})
+
 router.get('/book/:id', (req, res) => {
   const bookId = Number(req.params.id)
   db.getBookById(bookId)

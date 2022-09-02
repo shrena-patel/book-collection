@@ -9,7 +9,7 @@ function Nav () {
       <nav className="navbar is-transparent">
         <div className="navbar-brand">
           <Link to='/' className="navbar-item">
-            <p className="subtitle is-3">BOOKS.</p>
+            <p className="subtitle is-3">books.</p>
           </Link>
           <div className="navbar-burger" data-target="navbarExampleTransparentExample">
             <span></span>
