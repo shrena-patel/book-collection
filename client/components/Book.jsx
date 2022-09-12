@@ -17,7 +17,7 @@ function Book (props) {
   if (book.cover === null || book.cover === '') {
     bookCoverUrl = '/images/book-placeholder.jpeg'
   } else {
-    bookCoverUrl = `/images/${book.cover}`
+    bookCoverUrl = book.cover
   }
 
   const editBook = () => {

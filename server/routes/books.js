@@ -77,4 +77,10 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+router.patch('/:isbn', (req, res) => {
+  const isbn = req.params.id
+  const cover = req.body
+  console.log(isbn, cover)
+})
+
 module.exports = router

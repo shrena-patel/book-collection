@@ -42,8 +42,8 @@ export function getBookCoverImage (isbn) {
     })
 }
 
-export function updateBookCoverImage (cover) {
-  return request.patch('/api/v1/books/')
+export function updateBookCoverImageApi (cover, isbn) {
+  return request.patch(`/api/v1/books/${isbn}`)
     .send(cover)
     .then(res => {
       return res.body

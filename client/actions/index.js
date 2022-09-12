@@ -1,4 +1,4 @@
-import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, updateBookCoverImage } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, updateBookCoverImageApi } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const ADD_BOOK = 'ADD_BOOK'
@@ -61,11 +61,12 @@ export function getBooks () {
 export function getBookImageThunk (isbn) {
   return (dispatch) => {
     getBookCoverImage(isbn)
-      .then(res => {
+      .then(cover => {
         // dispatch() something instead of console.log
-        console.log(res, 'res in action')
-        dispatch(receiveBookCover(res, isbn))
-        console.log('!!!res:', res, 'isbn:', isbn)
+        console.log(cover, 'res in action')
+        dispatch(receiveBookCover(cover, isbn))
+        console.log('!!!res:', cover, 'isbn:', isbn)
+        dispatch(updateBookCoverThunk(cover, isbn))
         // res is the cover url, use that to save to the db where the isbn matches
         return null
       })
@@ -77,16 +78,46 @@ export function getBookImageThunk (isbn) {
 
 export function addBook (newBook) {
   return (dispatch) => {
-    addNewBook(newBook)
-      .then(result => {
-        dispatch(addNewBookAction(result))
-        return null
+    // do getBookCoverImage here before saving the book
+    // so the book is being saved with all the info including cover image
+    // then maybe don't need to do an updatebook
+    // can leave book cover image api where it is in bookinfo for now
+    getBookCoverImage(newBook.isbn)
+      .then(coverImage => {
+        newBook.cover = coverImage
+        addNewBook(newBook)
+          .then(result => {
+            dispatch(addNewBookAction(result))
+            return null
+          })
+          .catch(err => {
+            console.log(err.message)
+          })
       })
       .catch(err => {
         console.log(err.message)
       })
   }
 }
+
+// export function addBook (newBook) {
+//   return async (dispatch) => {
+//     // do getBookCoverImage here before saving the book
+//     // so the book is being saved with all the info including cover image
+//     // then maybe don't need to do an updatebook
+//     // can leave book cover image api where it is in bookinfo for now
+//     const coverImage = await getBookCoverImage(newBook.isbn)
+//     newBook.cover = coverImage
+//     addNewBook(newBook)
+//       .then(result => {
+//         dispatch(addNewBookAction(result))
+//         return null
+//       })
+//       .catch(err => {
+//         console.log(err.message)
+//       })
+//   }
+// }
 
 export function deleteBookThunk (bookId) {
   console.log('thunk 1', bookId)
@@ -103,10 +134,19 @@ export function deleteBookThunk (bookId) {
   }
 }
 
-export function updateBookCoverThunk (id, url) {
-  console.log('updatethunk', id, url)
+export function updateBookCoverThunk (cover, isbn) {
+  console.log('updatethunk', cover, isbn)
   return (dispatch) => {
-    // api
-    //then dispatch updateBookCoverAction
+    // internal api call to api.js then to route to update the book
+    // then dispatch updateBookCoverAction - might not need to do this - just do the api call to update the book
+    updateBookCoverImageApi(cover, isbn)
+      .then(result => {
+        console.log('thunk2', result)
+        dispatch(receiveBooks(result))
+        return null
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
   }
 }

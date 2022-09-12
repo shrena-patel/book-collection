@@ -27,7 +27,10 @@ function BookInfo () {
   useEffect(() => {
     console.log(bookById, 'bookbyid')
     dispatch(getBookImageThunk(bookById.isbn))
-    dispatch(updateBookCoverThunk(bookById?.cover))
+    // maybe don't want to do the below here as bookbyId doesn't have a cover yet
+    // need to do it in the get bookImageThunk
+   
+   // dispatch(updateBookCoverThunk(bookById?.cover))
     // setThisBook(bookById)
     // dispatch(getBookImageThunk('161620818X'))
     // dispatch(getBooks())161620818X
