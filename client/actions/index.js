@@ -1,4 +1,4 @@
-import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, updateBookCoverImageApi } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const ADD_BOOK = 'ADD_BOOK'
@@ -66,7 +66,7 @@ export function getBookImageThunk (isbn) {
         console.log(cover, 'res in action')
         dispatch(receiveBookCover(cover, isbn))
         console.log('!!!res:', cover, 'isbn:', isbn)
-        dispatch(updateBookCoverThunk(cover, isbn))
+        // dispatch(updateBookCoverThunk(cover, isbn))
         // res is the cover url, use that to save to the db where the isbn matches
         return null
       })
@@ -85,7 +85,7 @@ export function addBook (newBook) {
     getBookCoverImage(newBook.isbn)
       .then(coverImage => {
         newBook.cover = coverImage
-        addNewBook(newBook)
+        return addNewBook(newBook)
           .then(result => {
             dispatch(addNewBookAction(result))
             return null
@@ -134,19 +134,19 @@ export function deleteBookThunk (bookId) {
   }
 }
 
-export function updateBookCoverThunk (cover, isbn) {
-  console.log('updatethunk', cover, isbn)
-  return (dispatch) => {
-    // internal api call to api.js then to route to update the book
-    // then dispatch updateBookCoverAction - might not need to do this - just do the api call to update the book
-    updateBookCoverImageApi(cover, isbn)
-      .then(result => {
-        console.log('thunk2', result)
-        dispatch(receiveBooks(result))
-        return null
-      })
-      .catch(err => {
-        console.log(err.message)
-      })
-  }
-}
+// export function updateBookCoverThunk (cover, isbn) {
+//   console.log('updatethunk', cover, isbn)
+//   return (dispatch) => {
+//     // internal api call to api.js then to route to update the book
+//     // then dispatch updateBookCoverAction - might not need to do this - just do the api call to update the book
+//     updateBookCoverImageApi(cover, isbn)
+//       .then(result => {
+//         console.log('thunk2', result)
+//         dispatch(receiveBooks(result))
+//         return null
+//       })
+//       .catch(err => {
+//         console.log(err.message)
+//       })
+//   }
+// }

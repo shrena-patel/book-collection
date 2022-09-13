@@ -8,6 +8,7 @@ function Books () {
   const books = useSelector((state) => state.bookReducer)
 
   const dispatch = useDispatch()
+  
   useEffect(() => {
     dispatch(getBooks())
   }, [])
@@ -19,12 +20,12 @@ function Books () {
   // and on submit it switches back to the updated card component
   return (
     <>
-      <AddBook />
       <div className='bookCards'>
         {/* Put AddBook Component elsewhere so the styling doesn't impact the book cards */}
         {/* <AddBook /> */}
         {books.map((book, i) => <Book data={book} key={i} />
         )}
+        <AddBook />
       </div>
     </>
 
