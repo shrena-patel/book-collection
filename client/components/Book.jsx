@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { deleteBookThunk, addBookToFavourites } from '../actions'
+import { deleteBookThunk, addBookToFavouritesThunk } from '../actions'
 
 // for the edit functionality
 // when you click on the edit button, it should display an edit book card in same place
@@ -32,8 +32,9 @@ function Book (props) {
   // so that in the favourites component, we can use useSelector() to get the favourites
   // list from the global state
   const handleAddBookToFavourites = () => {
+    console.log('bokfavs', book)
     // this should be a thunk to add the book to a favourites table
-    dispatch(addBookToFavourites(book))
+    dispatch(addBookToFavouritesThunk(book))
   }
 
   return (

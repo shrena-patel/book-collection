@@ -36,10 +36,24 @@ function updateBook (updateBook, db = connection) {
   .where('id', updateBook.id)
 }
 
+// FAVOURITES ************************************** //
+
+function getFavourites (db = connection) {
+  return db('favourites')
+    .select()
+}
+
+function addBookToFavourites (book, db = connection) {
+  return db('favourites')
+    .insert(book)
+}
+
 module.exports = {
   getBooks,
   getBookById,
   addNewBook,
   deleteBook,
-  updateBook
+  updateBook,
+  getFavourites,
+  addBookToFavourites
 }

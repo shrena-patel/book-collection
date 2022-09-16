@@ -7,6 +7,21 @@ export function fetchBooks () {
     })
 }
 
+export function fetchFavourites () {
+  return request.get('/api/v1/favourites')
+    .then(res => {
+      return res.body
+    })
+}
+
+export function addBookToFavouritesApi (book) {
+  return request.post('/api/v1/favourites')
+    .send(book)
+    .then(res => {
+      return res.body
+    })
+}
+
 export function fetchBookById (bookId) {
   return request.get(`/api/v1/books/book/${bookId}`)
     .then(res => {
