@@ -5,6 +5,7 @@ export const ADD_BOOK = 'ADD_BOOK'
 export const DEL_BOOK = 'DEL_BOOK'
 export const RECEIVE_COVER = 'RECEIVE_COVER'
 export const UPDATE_COVER = 'UPDATE_COVER'
+export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
 
 export function receiveBooks (arr) {
   return {
@@ -40,6 +41,13 @@ export function updateBookCoverAction (id, cover) {
     type: UPDATE_COVER,
     id: id,
     cover: cover || null
+  }
+}
+
+export function addBookToFavourites (book) {
+  return {
+    type: ADD_TO_FAVOURITES,
+    book
   }
 }
 

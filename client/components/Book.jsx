@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { deleteBookThunk } from '../actions'
+import { deleteBookThunk, addBookToFavourites } from '../actions'
 
 // for the edit functionality
 // when you click on the edit button, it should display an edit book card in same place
@@ -27,6 +27,15 @@ function Book (props) {
 
     console.log('edit this book!')
   }
+
+  // this function needs to get the book info onclick, and add that book to a favouritesReducer
+  // so that in the favourites component, we can use useSelector() to get the favourites
+  // list from the global state
+  const handleAddBookToFavourites = () => {
+    // this should be a thunk to add the book to a favourites table
+    dispatch(addBookToFavourites(book))
+  }
+
   return (
     <>
       <div className="card">
@@ -49,9 +58,9 @@ function Book (props) {
           </div>
         </div>
         <footer className="card-footer">
-          <a href="#" className="card-footer-item">Like</a>
-          <a href="#" className="card-footer-item" onClick={() => editBook()}>Edit</a>
-          <a href="#" className="card-footer-item" onClick={() => dispatch(deleteBookThunk(book.id))}>Delete</a>
+          <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
+          <p className="card-footer-item" onClick={() => editBook()}>Edit</p>
+          <p className="card-footer-item" onClick={() => dispatch(deleteBookThunk(book.id))}>Delete</p>
         </footer>
       </div>
     </>
