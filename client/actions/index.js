@@ -64,6 +64,7 @@ export function getFavourites () {
   return (dispatch) => {
     fetchFavourites()
       .then(res => {
+        console.log('fetchfavouritesapiresultinthunk', res)
         dispatch(receiveFavourites(res))
         return null
       })
@@ -75,6 +76,7 @@ export function getFavourites () {
 
 export function addBookToFavouritesThunk (book) {
   return (dispatch) => {
+    console.log('bookinthunkfav', book)
     addBookToFavouritesApi(book)
       .then(result => {
         dispatch(addBookToFavourites(result))

@@ -15,8 +15,10 @@ function Book (props) {
 
   let bookCoverUrl = null
   if (book.cover === null || book.cover === '') {
+    console.log(book, 'bbooook in book')
     bookCoverUrl = '/images/book-placeholder.jpeg'
   } else {
+    console.log(book, 'bbooook in book')
     bookCoverUrl = book.cover
   }
 
@@ -28,9 +30,10 @@ function Book (props) {
     console.log('edit this book!')
   }
 
-  // this function needs to get the book info onclick, and add that book to a favouritesReducer
-  // so that in the favourites component, we can use useSelector() to get the favourites
-  // list from the global state
+  // Favourites TODO: 
+  // if the book already exists in the the favourites table, don't try and add it
+  // maybe have a separate FavBook component so that a delete fav action can be dispatch from that book card
+  // (currently just using the Book component, so the delete doesn't work properly - going to the wrong table)
   const handleAddBookToFavourites = () => {
     console.log('bokfavs', book)
     // this should be a thunk to add the book to a favourites table
@@ -52,11 +55,11 @@ function Book (props) {
               <p className="subtitle is-6">{book.author}</p>
             </div>
           </div>
-          <div className="content">
+          {/* <div className="content">
             <time dateTime="2016-1-1">
               Release year: {book.year_released}
             </time>
-          </div>
+          </div> */}
         </div>
         <footer className="card-footer">
           <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>

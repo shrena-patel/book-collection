@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
@@ -17,6 +18,7 @@ import { addBook } from '../actions'
 
 function AddBook () {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [newBook, setNewBook] = useState({
     title: '',
@@ -37,6 +39,7 @@ function AddBook () {
     evt.preventDefault()
     dispatch(addBook(newBook))
     handleResetForm()
+    navigate('/')
   }
 
   const handleChange = (evt) => {

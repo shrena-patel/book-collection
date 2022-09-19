@@ -20,7 +20,6 @@ body {
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: center;
-  padding-top: 3em;
 }
 
 .media {
@@ -41,12 +40,18 @@ body {
 
 .card-footer-item {
   color: #4e6a4a;
+
+  &:hover {
+    cursor: pointer;
+    color: #98b993;
+  }
 }
 
 .card-image:first-child img {
   max-width: 105px;
   display: flex;
-  left: 21%;
+  left: 23%;
+  border-radius: 0.25rem;
 }
 
 .add-book {
@@ -73,10 +78,16 @@ input[type=text] {
   border: none;
   border: 1px solid #98b993;
   background-color: #98b993;
+  color: #4e6a4a;
   border-radius: 5px;
   padding: 0.5em 1em;
   color: white;
   cursor: pointer;
+
+  &:hover {
+    background-color: #4e6a4a;
+    border-color: #4e6a4a;
+  }
 }
 
 .button.is-primary {
@@ -104,6 +115,10 @@ input[type=text] {
   font-size: 1.3em;
 }
 
+.navbar {
+  padding-bottom: 3em;
+}
+
 .navbar-link:not(.is-arrowless)::after {
   border-color: #4e6a4a;
 }
@@ -111,6 +126,12 @@ input[type=text] {
 .navbar-link:hover,
 a.navbar-item:hover {
   color: #4e6a4a;
+}
+
+a.navbar-item:focus {
+  color: #98b993;
+  // text-decoration: underline;
+  border-bottom: 1px solid #98b993;
 }
 
 .submitButton {
