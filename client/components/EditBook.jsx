@@ -20,7 +20,7 @@ function EditBook (props) {
   const [newBook, setNewBook] = useState({
     title: bookToEdit.title,
     author: bookToEdit.author,
-    cover: '',
+    cover: bookToEdit.cover,
     year_released: bookToEdit.year_released,
     isbn: bookToEdit.isbn
   })
