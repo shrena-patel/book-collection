@@ -12,6 +12,17 @@ function bookReducer (state = initialState, action) {
       return [...state, action.newBook]
     case 'DEL_BOOK':
       return state.filter((book) => book.id !== action.bookId)
+    case 'UPDATE_BOOK':
+      return state.map((book) => {
+        // console.log(action.book, 'action.book in reducer')
+        // console.log(action.id, 'action.id in reducer')
+        if (book.isbn === action.book.isbn) {
+          console.log('mapping')
+          book = action.book
+          console.log(book, 'eachbook after map')
+        }
+        return book
+      })
     case 'RECEIVE_COVER':
       // in here need to return state, then if make book.coverimage = action.cover
       return state.map(book => {
@@ -22,8 +33,8 @@ function bookReducer (state = initialState, action) {
         // Only want to return the individual book rather than the whole state
         return book
       })
-    case 'UPDATE_BOOK':
-      return action.books
+    // case 'UPDATE_BOOK':
+    //   return action.books
     default:
       return state
   }

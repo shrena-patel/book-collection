@@ -148,3 +148,7 @@ a.navbar-item:focus {
   outline: #4e6a4a 5px auto;
 }
 
+.fade-in {
+  transition: opacity 1s ease-in;
+  opacity: 1;
+}

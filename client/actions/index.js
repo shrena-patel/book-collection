@@ -3,6 +3,7 @@ import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, fetchFavourit
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const ADD_BOOK = 'ADD_BOOK'
 export const DEL_BOOK = 'DEL_BOOK'
+export const UPDATE_BOOK = 'UPDATE_BOOK'
 export const RECEIVE_COVER = 'RECEIVE_COVER'
 export const UPDATE_COVER = 'UPDATE_COVER'
 export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
@@ -34,6 +35,14 @@ export function deleteBookAction (bookId) {
   return {
     type: DEL_BOOK,
     bookId
+  }
+}
+
+export function updateBookAction (id, book) {
+  return {
+    type: UPDATE_BOOK,
+    id,
+    book
   }
 }
 

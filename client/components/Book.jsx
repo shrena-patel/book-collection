@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteBookThunk, addBookToFavouritesThunk } from '../actions'
@@ -15,28 +15,29 @@ function Book (props) {
 
   let bookCoverUrl = null
   if (book.cover === null || book.cover === '') {
-    console.log(book, 'bbooook in book')
+    // console.log(book, 'bbooook in book')
     bookCoverUrl = '/images/book-placeholder.jpeg'
   } else {
-    console.log(book, 'bbooook in book')
+    // console.log(book, 'bbooook in book')
     bookCoverUrl = book.cover
   }
 
-  const editBook = () => {
-    // switch to edit component for that particular book
-    // then in the edit book component, when the submit button is clicked, it switches back to
-    // this component.
+  // const [isEdit, setIsEdit] = useState(true)
+  // const editBook = () => {
+  //   // switch to edit component for that particular book
+  //   // then in the edit book component, when the submit button is clicked, it switches back to
+  //   // this component.
+  //   setIsEdit(false)
+  //   console.log(isEdit)
+  //   console.log('edit this book!')
+  // }
 
-    console.log('edit this book!')
-  }
-
-  // Favourites TODO: 
+  // Favourites TODO:
   // if the book already exists in the the favourites table, don't try and add it
   // maybe have a separate FavBook component so that a delete fav action can be dispatch from that book card
   // (currently just using the Book component, so the delete doesn't work properly - going to the wrong table)
   const handleAddBookToFavourites = () => {
-    console.log('bokfavs', book)
-    // this should be a thunk to add the book to a favourites table
+    // Thunk to add book to Favourites table
     dispatch(addBookToFavouritesThunk(book))
   }
 
@@ -63,7 +64,7 @@ function Book (props) {
         </div>
         <footer className="card-footer">
           <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
-          <p className="card-footer-item" onClick={() => editBook()}>Edit</p>
+          <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
           <p className="card-footer-item" onClick={() => dispatch(deleteBookThunk(book.id))}>Delete</p>
         </footer>
       </div>
