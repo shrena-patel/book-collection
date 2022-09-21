@@ -28,7 +28,7 @@ function Books () {
       <div className='bookCards'>
         {/* Map over books, and for each one, check if isEdit equals the book.id - if it does, render EditBook */}
         {books.map((book, i) => {
-          return isEdit === book.id ? <EditBook book={book} key={i} /> : <Book data={book} key={i} editBookFunc={() => editBook(book.id)} />
+          return isEdit === book.id ? <EditBook book={book} key={i} setIsEdit={setIsEdit} /> : <Book data={book} key={i} editBookFunc={() => editBook(book.id)} />
         }
         )}
       </div>

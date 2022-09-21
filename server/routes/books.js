@@ -27,9 +27,13 @@ router.post('/', (req, res) => {
     })
 })
 
-router.patch('/', (req, res) => {
+router.patch('/:id', (req, res) => {
+  // req.body is the body of the api request from the client side
   const bookUpdate = req.body
-  db.updateBook(bookUpdate)
+  const bookId = req.params.id
+  console.log(bookId)
+  console.log(bookUpdate)
+  db.updateBook(bookId, bookUpdate)
     .then(() => {
       db.getBooks()
         .then(updatedBooks => {

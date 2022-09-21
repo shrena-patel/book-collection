@@ -1,10 +1,6 @@
 import { useDispatch } from 'react-redux'
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-
-import { updateBookAction } from '../actions'
+import { updateBookThunk } from '../actions'
 
 // for the edit functionality
 // when you click on the edit button, it should display an edit book card in same place
@@ -14,7 +10,6 @@ import { updateBookAction } from '../actions'
 
 function EditBook (props) {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const bookToEdit = props.book
 
   const [newBook, setNewBook] = useState({
@@ -25,21 +20,13 @@ function EditBook (props) {
     isbn: bookToEdit.isbn
   })
 
-  // const handleResetForm = () => {
-  //   const books = Array.from(document.querySelectorAll('input')).forEach(
-  //     input => (input.value = '')
-  //   )
-  //   setNewBook(books)
-  // }
-
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    // dispatch(addBook(newBook))
-    // handleResetForm()
-    // navigate('/')
     console.log(newBook, 'newBook in editbook')
-    dispatch(updateBookAction(bookToEdit.id, newBook))
-    navigate('/')
+    dispatch(updateBookThunk(bookToEdit.id, newBook))
+    // Set the isEdit state from Books.jsx to be null (it's expecting the isEdit to be a number, so if it's null,
+    // isEdit will be false, and therefore Book.jsx will show again)
+    props.setIsEdit(null)
   }
 
   const handleChange = (evt) => {
@@ -48,11 +35,10 @@ function EditBook (props) {
       [evt.target.name]: evt.target.value
     })
   }
-  // when redux state changes (i/e when the form is submitted), clear the form
-  // use useSelector and useEffect
-  useEffect(() => {
 
+  useEffect(() => {
   }, [newBook])
+
   return (
     <>
       <div className="card">

@@ -1,4 +1,4 @@
-import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, fetchFavourites, addBookToFavouritesApi } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, fetchFavourites, addBookToFavouritesApi, updateBookApi } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const ADD_BOOK = 'ADD_BOOK'
@@ -68,6 +68,20 @@ export function addBookToFavourites (book) {
 }
 
 // THUNK
+
+export function updateBookThunk (id, book) {
+  return (dispatch) => {
+    updateBookApi(id, book)
+      .then(res => {
+        console.log(res)
+        dispatch(receiveBooks(res))
+        return null
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  }
+}
 
 export function getFavourites () {
   return (dispatch) => {

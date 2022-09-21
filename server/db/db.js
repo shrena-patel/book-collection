@@ -30,10 +30,10 @@ function deleteBook (id, db = connection) {
   .where('id', id)
 }
 
-function updateBook (updateBook, db = connection) {
+function updateBook (bookId, updateBook, db = connection) {
   return db('books')
   .update(updateBook)
-  .where('id', updateBook.id)
+  .where('id', bookId)
 }
 
 // FAVOURITES ************************************** //
