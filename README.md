@@ -1,6 +1,24 @@
-# Fullstack Collection App
+# Book Collection
 
-This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, api requests, react components, and redux actions and creators. Let's get going!
+This is a place to store the books I've read from the library. The library app doesn't have a way to view the books I've taken out in the past, so this app will store all of those.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```
 npm install
