@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getBooks } from '../actions'
 import Book from './Book'
-import AddBook from './AddBook'
+import EditBook from './EditBook'
 
 function Books () {
   const books = useSelector((state) => state.bookReducer)
@@ -13,19 +13,20 @@ function Books () {
     dispatch(getBooks())
   }, [])
 
-  // look at this link: https://stackoverflow.com/questions/61542337/reactjs-need-to-change-card-into-another-card-onclick
-  // for how to switch out a component onclick
-  // this will be need for the 'editBook' functionality
-  // so when you click 'edit' on each book, it will switch to the edit card
-  // and on submit it switches back to the updated card component
+  const [isEdit, setIsEdit] = useState(null)
+  const editBook = (id) => {
+    // TODO: also add a smoother transition for switching of cards
+    setIsEdit(id)
+  }
+
   return (
     <>
       <div className='bookCards'>
-        {/* Put AddBook Component elsewhere so the styling doesn't impact the book cards */}
-        {/* <AddBook /> */}
-        {books.map((book, i) => <Book data={book} key={i} />
+        {/* Map over books, and for each one, check if isEdit equals the book.id - if it does, render EditBook */}
+        {books.map((book, i) => {
+          return isEdit === book.id ? <EditBook book={book} key={i} setIsEdit={setIsEdit} /> : <Book data={book} key={i} editBookFunc={() => editBook(book.id)} />
+        }
         )}
-        <AddBook />
       </div>
     </>
 

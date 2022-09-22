@@ -7,6 +7,21 @@ export function fetchBooks () {
     })
 }
 
+export function fetchFavourites () {
+  return request.get('/api/v1/favourites')
+    .then(res => {
+      return res.body
+    })
+}
+
+export function addBookToFavouritesApi (book) {
+  return request.post('/api/v1/favourites')
+    .send(book)
+    .then(res => {
+      return res.body
+    })
+}
+
 export function fetchBookById (bookId) {
   return request.get(`/api/v1/books/book/${bookId}`)
     .then(res => {
@@ -45,6 +60,14 @@ export function getBookCoverImage (isbn) {
 export function updateBookCoverImageApi (cover, isbn) {
   return request.patch(`/api/v1/books/${isbn}`)
     .send(cover)
+    .then(res => {
+      return res.body
+    })
+}
+
+export function updateBookApi (id, book) {
+  return request.patch(`/api/v1/books/${id}`)
+    .send(book)
     .then(res => {
       return res.body
     })

@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { addBook } from '../actions'
 
-// get isbn API call working to get the cover art for each book
-// user enters isbn number
-// set the local state to include the isbn
-// dispatch an action that will make the api call to get the cover art
-// set the cover art in the redux global state
-// save the artwork in the database
-// render the art from this api call
-
-// or, could not have artwork on main page,
-// then do the api call in the useEffect onload of the BookInfo component
-
 function AddBook () {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [newBook, setNewBook] = useState({
     title: '',
@@ -37,6 +28,7 @@ function AddBook () {
     evt.preventDefault()
     dispatch(addBook(newBook))
     handleResetForm()
+    navigate('/')
   }
 
   const handleChange = (evt) => {
@@ -45,8 +37,7 @@ function AddBook () {
       [evt.target.name]: evt.target.value
     })
   }
-  // when redux state changes (i/e when the form is submitted), clear the form
-  // use useSelector and useEffect
+
   useEffect(() => {
 
   }, [newBook])

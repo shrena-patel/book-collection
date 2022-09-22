@@ -15,6 +15,8 @@ function Nav () {
             <span></span>
             <span></span>
             <span></span>
+            <Link to='/' className='navbar-item'>Home</Link>
+            <Link to='/addbook' className='navbar-item'>Add book</Link>
           </div>
         </div>
         <div id="navbarExampleTransparentExample" className="navbar-menu">
@@ -23,6 +25,7 @@ function Nav () {
         Home
             </a> */}
             <Link to='/' className='navbar-item'>Home</Link>
+            <Link to='/addbook' className='navbar-item'>Add book</Link>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link" href="https://bulma.io/documentation/overview/start/">
           Filter books
@@ -31,13 +34,13 @@ function Nav () {
                 <a className="navbar-item" href="https://bulma.io/documentation/overview/start/">
             Read
                 </a>
-                <a className="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
+                <a className="navbar-item" href="https://catalogue.wcl.govt.nz/?section=myaccount&page=myLists&tab=myList_682563133">
             Reading list
                 </a>
-                <hr className="navbar-divider"/>
-                <a className="navbar-item" href="https://bulma.io/documentation/columns/basics/">
+                {/* <hr className="navbar-divider"/> */}
+                {/* <a className="navbar-item" href="https://bulma.io/documentation/columns/basics/">
             Recommendations
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

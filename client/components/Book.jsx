@@ -1,13 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { deleteBookThunk, addBookToFavourites } from '../actions'
-
-// for the edit functionality
-// when you click on the edit button, it should display an edit book card in same place
-// where book is rendered in Books.jsx, could have a ternary
-// that check if state of 'editbook' is set to true or false,
-// if it's true, set display the Book.jsx component, otherwise display the EditBook.jsx component in it's place
+import { deleteBookThunk, addBookToFavouritesThunk } from '../actions'
 
 function Book (props) {
   const book = props.data
@@ -15,25 +9,22 @@ function Book (props) {
 
   let bookCoverUrl = null
   if (book.cover === null || book.cover === '') {
+    console.log(book, 'bbooook in book IF')
     bookCoverUrl = '/images/book-placeholder.jpeg'
+  } else if (book.cover === 'sunset.jpg') {
+    bookCoverUrl = `/images/${book.cover}`
   } else {
+    console.log(book, 'bbooook in book ELSE')
     bookCoverUrl = book.cover
   }
 
-  const editBook = () => {
-    // switch to edit component for that particular book
-    // then in the edit book component, when the submit button is clicked, it switches back to
-    // this component.
-
-    console.log('edit this book!')
-  }
-
-  // this function needs to get the book info onclick, and add that book to a favouritesReducer
-  // so that in the favourites component, we can use useSelector() to get the favourites
-  // list from the global state
+  // Favourites TODO:
+  // if the book already exists in the the favourites table, don't try and add it
+  // maybe have a separate FavBook component so that a delete fav action can be dispatch from that book card
+  // (currently just using the Book component, so the delete doesn't work properly - going to the wrong table)
   const handleAddBookToFavourites = () => {
-    // this should be a thunk to add the book to a favourites table
-    dispatch(addBookToFavourites(book))
+    // Thunk to add book to Favourites table
+    dispatch(addBookToFavouritesThunk(book))
   }
 
   return (
@@ -51,15 +42,15 @@ function Book (props) {
               <p className="subtitle is-6">{book.author}</p>
             </div>
           </div>
-          <div className="content">
+          {/* <div className="content">
             <time dateTime="2016-1-1">
               Release year: {book.year_released}
             </time>
-          </div>
+          </div> */}
         </div>
         <footer className="card-footer">
           <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
-          <p className="card-footer-item" onClick={() => editBook()}>Edit</p>
+          <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
           <p className="card-footer-item" onClick={() => dispatch(deleteBookThunk(book.id))}>Delete</p>
         </footer>
       </div>
