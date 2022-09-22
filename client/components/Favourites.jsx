@@ -15,8 +15,6 @@ function Favourites () {
 
   return (
     <div className='bookCards'>
-      {/* Put AddBook Component elsewhere so the styling doesn't impact the book cards */}
-      {/* <AddBook /> */}
       {favouritesList?.map((book, i) => <Book data={book} key={i} />
       )}
     </div>

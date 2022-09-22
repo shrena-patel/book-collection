@@ -15,13 +15,9 @@ function Books () {
 
   const [isEdit, setIsEdit] = useState(null)
   const editBook = (id) => {
-    // switch to edit component for that particular book
-    // TODO: then on submit button of EditBook, it should switch back to updated component
     // TODO: also add a smoother transition for switching of cards
     setIsEdit(id)
   }
-
-  // look at this link: https://stackoverflow.com/questions/61542337/reactjs-need-to-change-card-into-another-card-onclick
 
   return (
     <>

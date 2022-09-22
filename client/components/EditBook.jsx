@@ -2,12 +2,6 @@ import { useDispatch } from 'react-redux'
 import React, { useState, useEffect } from 'react'
 import { updateBookThunk } from '../actions'
 
-// for the edit functionality
-// when you click on the edit button, it should display an edit book card in same place
-// where book is rendered in Books.jsx, could have a ternary
-// that check if state of 'editbook' is set to true or false,
-// if it's true, set display the Book.jsx component, otherwise display the EditBook.jsx component in it's place
-
 function EditBook (props) {
   const dispatch = useDispatch()
   const bookToEdit = props.book

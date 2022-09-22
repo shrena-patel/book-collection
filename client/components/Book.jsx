@@ -1,13 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteBookThunk, addBookToFavouritesThunk } from '../actions'
-
-// for the edit functionality
-// when you click on the edit button, it should display an edit book card in same place
-// where book is rendered in Books.jsx, could have a ternary
-// that check if state of 'editbook' is set to true or false,
-// if it's true, set display the Book.jsx component, otherwise display the EditBook.jsx component in it's place
 
 function Book (props) {
   const book = props.data
@@ -15,22 +9,14 @@ function Book (props) {
 
   let bookCoverUrl = null
   if (book.cover === null || book.cover === '') {
-    // console.log(book, 'bbooook in book')
+    console.log(book, 'bbooook in book IF')
     bookCoverUrl = '/images/book-placeholder.jpeg'
+  } else if (book.cover === 'sunset.jpg') {
+    bookCoverUrl = `/images/${book.cover}`
   } else {
-    // console.log(book, 'bbooook in book')
+    console.log(book, 'bbooook in book ELSE')
     bookCoverUrl = book.cover
   }
-
-  // const [isEdit, setIsEdit] = useState(true)
-  // const editBook = () => {
-  //   // switch to edit component for that particular book
-  //   // then in the edit book component, when the submit button is clicked, it switches back to
-  //   // this component.
-  //   setIsEdit(false)
-  //   console.log(isEdit)
-  //   console.log('edit this book!')
-  // }
 
   // Favourites TODO:
   // if the book already exists in the the favourites table, don't try and add it
