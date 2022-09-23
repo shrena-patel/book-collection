@@ -15,8 +15,8 @@ function Nav () {
             <span></span>
             <span></span>
             <span></span>
-            <Link to='/' className='navbar-item'>Home</Link>
-            <Link to='/addbook' className='navbar-item'>Add book</Link>
+            {/* <Link to='/' className='navbar-item'>Home</Link>
+            <Link to='/addbook' className='navbar-item'>Add book</Link> */}
           </div>
         </div>
         <div id="navbarExampleTransparentExample" className="navbar-menu">
