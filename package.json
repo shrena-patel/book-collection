@@ -74,7 +74,6 @@
     "@fortawesome/free-regular-svg-icons": "^6.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "@fortawesome/react-fontawesome": "^0.1.17",
-    "@vscode/sqlite3": "^5.0.7",
     "bulma": "^0.9.3",
     "express": "^4.17.1",
     "knex": "^0.95.15",
