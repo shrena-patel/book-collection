@@ -14,6 +14,7 @@ function bookReducer (state = initialState, action) {
         if (book.isbn === action.book.isbn) {
           book = action.book
         }
+        
         return book
       })
     case 'RECEIVE_COVER':
