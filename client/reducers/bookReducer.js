@@ -12,9 +12,7 @@ function bookReducer (state = initialState, action) {
     case 'UPDATE_BOOK':
       return state.map((book) => {
         if (book.isbn === action.book.isbn) {
-          console.log('mapping')
           book = action.book
-          console.log(book, 'eachbook after map')
         }
         return book
       })
