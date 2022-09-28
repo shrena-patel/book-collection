@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBook, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 function Nav () {
+  const menuRef = useRef(null)
+  const burgerRef = useRef(null)
+
+  const handleToggleMenu = () => {
+    if (menuRef.current.style.display !== 'block') {
+      menuRef.current.style.display = 'block'
+    } else {
+      menuRef.current.style.display = 'none'
+    }
+  }
+
+  const hideMenu = () => {
+    if (burgerRef.current.style.display === 'block' || menuRef.current.style.display === 'block') {
+      menuRef.current.style.display = 'none'
+    }
+  }
   return (
     <>
       <nav className="navbar is-transparent">
@@ -11,21 +27,16 @@ function Nav () {
           <Link to='/' className="navbar-item">
             <p className="subtitle is-3">books.</p>
           </Link>
-          <div className="navbar-burger" data-target="navbarExampleTransparentExample">
+          <div ref={burgerRef} className="navbar-burger" data-target="navbarExampleTransparentExample" onClick={handleToggleMenu}>
             <span></span>
             <span></span>
             <span></span>
-            {/* <Link to='/' className='navbar-item'>Home</Link>
-            <Link to='/addbook' className='navbar-item'>Add book</Link> */}
           </div>
         </div>
-        <div id="navbarExampleTransparentExample" className="navbar-menu">
+        <div ref={menuRef} id="navbarExampleTransparentExample" className="navbar-menu">
           <div className="navbar-start">
-            {/* <a className="navbar-item" href="https://bulma.io/">
-        Home
-            </a> */}
-            <Link to='/' className='navbar-item'>Home</Link>
-            <Link to='/addbook' className='navbar-item'>Add book</Link>
+            <Link to='/' className='navbar-item' onClick={hideMenu}>Home</Link>
+            <Link to='/addbook' className='navbar-item' onClick={hideMenu}>Add book</Link>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link" href="https://bulma.io/documentation/overview/start/">
           Filter books
@@ -38,9 +49,6 @@ function Nav () {
             Reading list
                 </a>
                 {/* <hr className="navbar-divider"/> */}
-                {/* <a className="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-            Recommendations
-                </a> */}
               </div>
             </div>
           </div>
@@ -49,7 +57,7 @@ function Nav () {
             <div className="navbar-item">
               <div className="field is-grouped">
                 <p className="control">
-                  <Link to='/favourites' className='bd-tw-button button'>
+                  <Link to='/favourites' className='bd-tw-button button' onClick={hideMenu}>
                     <span className="icon">
                       <FontAwesomeIcon icon={faHeart} />
                     </span>
