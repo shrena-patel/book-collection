@@ -6,6 +6,8 @@ function favouritesReducer (state = initialState, action) {
       return action.favourites
     case 'ADD_TO_FAVOURITES':
       return [...state, action.book]
+    case 'DEL_FROM_FAVOURITES':
+      return state.filter((book) => book.id !== action.id)
     default:
       return state
   }

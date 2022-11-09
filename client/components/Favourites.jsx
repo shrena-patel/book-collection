@@ -15,7 +15,7 @@ function Favourites () {
 
   return (
     <div className='bookCards'>
-      {favouritesList?.map((book, i) => <Book data={book} key={i} />
+      {favouritesList?.map((book, i) => <Book data={book} key={i} favourites={true} />
       )}
     </div>
   )

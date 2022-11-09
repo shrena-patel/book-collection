@@ -30,4 +30,23 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  db.deleteBookFromFavourites(id)
+    .then(() => {
+      db.getFavourites()
+        .then(updatedBooks => {
+          res.json(updatedBooks)
+          return null
+        })
+        .catch(err => {
+          res.status(500).json({ error: err.message })
+        })
+      return null
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+})
+
 module.exports = router

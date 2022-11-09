@@ -1,4 +1,4 @@
-import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, fetchFavourites, addBookToFavouritesApi, updateBookApi } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, fetchFavourites, addBookToFavouritesApi, updateBookApi, deleteBookFromFavouritesApi } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const ADD_BOOK = 'ADD_BOOK'
@@ -8,6 +8,7 @@ export const RECEIVE_COVER = 'RECEIVE_COVER'
 export const UPDATE_COVER = 'UPDATE_COVER'
 export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
 export const RECEIVE_FAVOURITES = 'RECEIVE_FAVOURITES'
+export const DEL_FROM_FAVOURITES = 'DEL_FROM_FAVOURITES'
 
 // ACTIONS ****************************************** //
 
@@ -66,6 +67,13 @@ export function addBookToFavourites (book) {
   return {
     type: ADD_TO_FAVOURITES,
     book
+  }
+}
+
+export function deleteBookFromFavourites (id) {
+  return {
+    type: DEL_FROM_FAVOURITES,
+    id
   }
 }
 
@@ -192,6 +200,19 @@ export function addBookToFavouritesThunk (book) {
     addBookToFavouritesApi(book)
       .then(result => {
         dispatch(addBookToFavourites(result))
+        return null
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  }
+}
+
+export function deleteBookFromFavouritesThunk (id) {
+  return (dispatch) => {
+    deleteBookFromFavouritesApi(id)
+      .then(results => {
+        dispatch(receiveFavourites(results))
         return null
       })
       .catch(err => {

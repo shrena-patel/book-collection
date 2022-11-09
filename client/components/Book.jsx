@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { deleteBookThunk, addBookToFavouritesThunk } from '../actions'
+import { deleteBookThunk, addBookToFavouritesThunk, deleteBookFromFavouritesThunk } from '../actions'
 
 function Book (props) {
   const book = props.data
@@ -27,6 +27,11 @@ function Book (props) {
     dispatch(addBookToFavouritesThunk(book))
   }
 
+  // props.favourites ? deletefavouritethunk : deletebookthunk
+
+  const handleDeleteBook = () => {
+    props.favourites ? dispatch(deleteBookFromFavouritesThunk(book.id)) : dispatch(deleteBookThunk(book.id))
+  }
   return (
     <>
       <div className="card">
@@ -51,7 +56,8 @@ function Book (props) {
         <footer className="card-footer">
           <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
           <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
-          <p className="card-footer-item" onClick={() => dispatch(deleteBookThunk(book.id))}>Delete</p>
+          {/* <p className="card-footer-item" onClick={() => dispatch(deleteBookThunk(book.id))}>Delete</p> */}
+          <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p>
         </footer>
       </div>
     </>

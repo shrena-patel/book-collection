@@ -48,6 +48,12 @@ function addBookToFavourites (book, db = connection) {
     .insert(book)
 }
 
+function deleteBookFromFavourites (id, db = connection) {
+  return db('favourites')
+    .where('id', id)
+    .delete()
+}
+
 module.exports = {
   getBooks,
   getBookById,
@@ -55,5 +61,6 @@ module.exports = {
   deleteBook,
   updateBook,
   getFavourites,
-  addBookToFavourites
+  addBookToFavourites,
+  deleteBookFromFavourites
 }
