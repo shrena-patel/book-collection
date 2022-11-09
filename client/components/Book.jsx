@@ -18,18 +18,13 @@ function Book (props) {
     bookCoverUrl = book.cover
   }
 
-  // Favourites TODO:
-  // if the book already exists in the the favourites table, don't try and add it
-  // maybe have a separate FavBook component so that a delete fav action can be dispatch from that book card
-  // (currently just using the Book component, so the delete doesn't work properly - going to the wrong table)
   const handleAddBookToFavourites = () => {
     // Thunk to add book to Favourites table
     dispatch(addBookToFavouritesThunk(book))
   }
 
-  // props.favourites ? deletefavouritethunk : deletebookthunk
-
   const handleDeleteBook = () => {
+    // if Book component is being rendered by <Favourites/>, do deleteFromFavourites, otherwise do deleteBook
     props.favourites ? dispatch(deleteBookFromFavouritesThunk(book.id)) : dispatch(deleteBookThunk(book.id))
   }
   return (
@@ -56,7 +51,6 @@ function Book (props) {
         <footer className="card-footer">
           <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
           <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
-          {/* <p className="card-footer-item" onClick={() => dispatch(deleteBookThunk(book.id))}>Delete</p> */}
           <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p>
         </footer>
       </div>
