@@ -29,6 +29,14 @@ export function deleteBookFromFavouritesApi (id) {
     })
 }
 
+export function updateFavouriteApi (id, book) {
+  return request.patch(`/api/v1/favourites/${id}`)
+    .send(book)
+    .then(res => {
+      return res.body
+    })
+}
+
 export function fetchBookById (bookId) {
   return request.get(`/api/v1/books/book/${bookId}`)
     .then(res => {
