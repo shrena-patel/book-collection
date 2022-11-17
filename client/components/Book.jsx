@@ -24,6 +24,8 @@ function Book (props) {
     allFavouriteBooks.forEach(favBook => {
       if (favBook.title !== book.title) {
         dispatch(addBookToFavouritesThunk(book))
+      } else {
+        console.log('already added')
       }
     })
   }
