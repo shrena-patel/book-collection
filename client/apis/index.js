@@ -1,21 +1,24 @@
 import request from 'superagent'
 
+const bookUrl = '/api/v1/books'
+const favouritesUrl = '/api/v1/favourites'
+
 export function fetchBooks () {
-  return request.get('/api/v1/books')
+  return request.get(bookUrl)
     .then(res => {
       return res.body
     })
 }
 
 export function fetchFavourites () {
-  return request.get('/api/v1/favourites')
+  return request.get(favouritesUrl)
     .then(res => {
       return res.body
     })
 }
 
 export function addBookToFavouritesApi (book) {
-  return request.post('/api/v1/favourites')
+  return request.post(favouritesUrl)
     .send(book)
     .then(res => {
       return res.body
@@ -23,14 +26,14 @@ export function addBookToFavouritesApi (book) {
 }
 
 export function deleteBookFromFavouritesApi (id) {
-  return request.del(`/api/v1/favourites/${id}`)
+  return request.del(`${favouritesUrl}/${id}`)
     .then(res => {
       return res.body
     })
 }
 
 export function updateFavouriteApi (id, book) {
-  return request.patch(`/api/v1/favourites/${id}`)
+  return request.patch(`${favouritesUrl}/${id}`)
     .send(book)
     .then(res => {
       return res.body
@@ -38,14 +41,14 @@ export function updateFavouriteApi (id, book) {
 }
 
 export function fetchBookById (bookId) {
-  return request.get(`/api/v1/books/book/${bookId}`)
+  return request.get(`${bookUrl}//book/${bookId}`)
     .then(res => {
       return res.body
     })
 }
 
 export function addNewBook (newBook) {
-  return request.post('/api/v1/books')
+  return request.post(bookUrl)
     .send(newBook)
     .then(res => {
       return res.body
@@ -54,7 +57,7 @@ export function addNewBook (newBook) {
 
 export function deleteBookApi (bookId) {
   console.log('api delete', bookId)
-  return request.del(`/api/v1/books/${bookId}`)
+  return request.del(`${bookUrl}/${bookId}`)
     .then(res => {
       console.log('res in api', res)
       return res.body
@@ -64,16 +67,16 @@ export function deleteBookApi (bookId) {
 export function getBookCoverImage (isbn) {
   return request.get(`https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`)
     .then(res => {
-      console.log('book cover res in api', typeof res.req.url)
+      // console.log('book cover res in api', typeof res.req.url)
       const url = res.req.url
       url.split(' ').join('')
-      console.log('the edited url in api', url)
+      // console.log('the edited url in api', url)
       return url
     })
 }
 
 export function updateBookCoverImageApi (cover, isbn) {
-  return request.patch(`/api/v1/books/${isbn}`)
+  return request.patch(`${bookUrl}/${isbn}`)
     .send(cover)
     .then(res => {
       return res.body
@@ -81,7 +84,7 @@ export function updateBookCoverImageApi (cover, isbn) {
 }
 
 export function updateBookApi (id, book) {
-  return request.patch(`/api/v1/books/${id}`)
+  return request.patch(`${bookUrl}/${id}`)
     .send(book)
     .then(res => {
       return res.body

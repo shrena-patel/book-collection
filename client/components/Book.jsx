@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteBookThunk, addBookToFavouritesThunk, deleteBookFromFavouritesThunk } from '../actions'
 
@@ -7,26 +7,37 @@ function Book (props) {
   const book = props.data
   const dispatch = useDispatch()
 
+  // favourites reducer is only populated when you go to the favourites page, until then it's empty
+  const allFavouriteBooks = useSelector(state => state.favouritesReducer)
+
   let bookCoverUrl = null
   if (book.cover === null || book.cover === '') {
-    console.log(book, 'bbooook in book IF')
     bookCoverUrl = '/images/book-placeholder.jpeg'
   } else if (book.cover === 'sunset.jpg') {
     bookCoverUrl = `/images/${book.cover}`
   } else {
-    console.log(book, 'bbooook in book ELSE')
     bookCoverUrl = book.cover
   }
 
   const handleAddBookToFavourites = () => {
-    // Thunk to add book to Favourites table
-    dispatch(addBookToFavouritesThunk(book))
+    // Check if the book already exist in the favouritesReducer
+    allFavouriteBooks.forEach(favBook => {
+      if (favBook.title !== book.title) {
+        dispatch(addBookToFavouritesThunk(book))
+      }
+    })
   }
 
   const handleDeleteBook = () => {
     // if Book component is being rendered by <Favourites/>, do deleteFromFavourites, otherwise do deleteBook
     props.favourites ? dispatch(deleteBookFromFavouritesThunk(book.id)) : dispatch(deleteBookThunk(book.id))
   }
+
+  // const handleEditBook = () => {
+  //   // props.editBookFunc is being passed up to the Books component
+  //   props.favourites
+  // }
+
   return (
     <>
       <div className="card">
