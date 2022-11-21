@@ -51,6 +51,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id
+  console.log('ROUTE DELETE FAVOURITES id:', id)
   db.deleteBookFromFavourites(id)
     .then(() => {
       return null
