@@ -15,10 +15,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const book = req.body
-  console.log('ROUTE!!!!!!!!!!!!!!!!!!!!!!!', book)
-  // db.geFavourites
-  // if book is already in db, don't do anything
-  // else, do db.addBookToFavourites
   db.addBookToFavourites(book)
     .then((ids) => {
       book.id = ids[0]
@@ -51,15 +47,13 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id
-  console.log('ROUTE DELETE FAVOURITES id:', id)
   db.deleteBookFromFavourites(id)
     .then(() => {
-      return null
+      // this db.getFavourites() needs to be inside the .then
+      // otherwise both the db function will run at the same time creating a race condition
+      // so we want to do the delete, THEN the getFavourites
+      return db.getFavourites()
     })
-    .catch(err => {
-      res.status(500).send(err.message)
-    })
-  db.getFavourites()
     .then(updatedBooks => {
       res.json(updatedBooks)
       return null
@@ -92,27 +86,27 @@ router.delete('/:id', (req, res) => {
 //     })
 // })
 
-router.patch('/:id', (req, res) => {
-  // req.body is the body of the api request from the client side
-  const bookUpdate = req.body
-  const bookId = req.params.id
-  console.log(bookId)
-  console.log(bookUpdate)
-  db.updateFavouriteBook(bookId, bookUpdate)
-    .then(() => {
-      return null
-    })
-    .catch(err => {
-      res.status(500).send(err.message)
-    })
-  db.getFavourites()
-    .then(updatedBooks => {
-      res.json(updatedBooks)
-      return null
-    })
-    .catch(err => {
-      res.status(500).send(err.message)
-    })
-})
+// router.patch('/:id', (req, res) => {
+//   // req.body is the body of the api request from the client side
+//   const bookUpdate = req.body
+//   const bookId = req.params.id
+//   console.log(bookId)
+//   console.log(bookUpdate)
+//   db.updateFavouriteBook(bookId, bookUpdate)
+//     .then(() => {
+//       return null
+//     })
+//     .catch(err => {
+//       res.status(500).send(err.message)
+//     })
+//   db.getFavourites()
+//     .then(updatedBooks => {
+//       res.json(updatedBooks)
+//       return null
+//     })
+//     .catch(err => {
+//       res.status(500).send(err.message)
+//     })
+// })
 
 module.exports = router
