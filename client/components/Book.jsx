@@ -77,7 +77,7 @@ function Book (props) {
         <footer className="card-footer">
           {
             props.favourites === true
-              ? <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p> 
+              ? <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p>
               : <>
                 <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
                 <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
