@@ -6,7 +6,6 @@ import Book from '../components/Book'
 function Favourites () {
   const dispatch = useDispatch()
   const favouritesList = useSelector(state => state.favouritesReducer)
-  console.log(typeof favouritesList)
 
   useEffect(() => {
     dispatch(getFavourites())
