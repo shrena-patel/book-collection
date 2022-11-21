@@ -21,14 +21,27 @@ function Book (props) {
 
   const handleAddBookToFavourites = () => {
     // Check if the book already exist in the favouritesReducer
+    // allFavouriteBooks.forEach(favBook => {
+    //   if (favBook.title !== book.title) {
+
+    //   } else {
+    //     console.log('already added')
+    //   }
+    // })
+    let matchFound = false
     allFavouriteBooks.forEach(favBook => {
-      if (favBook.title !== book.title) {
-        dispatch(addBookToFavouritesThunk(book))
-      } else {
-        console.log('already added')
+      if (favBook.title === book.title) {
+        matchFound = true
       }
+      return matchFound
     })
+    if (!matchFound) {
+      dispatch(addBookToFavouritesThunk(book))
+    }
   }
+  // if the book already is in favourites:
+  // either have a popup saying book is already in favourites
+  // OR disable the like button (grey it out or remove the link) if it already exists
 
   const handleDeleteBook = () => {
     // if Book component is being rendered by <Favourites/>, do deleteFromFavourites, otherwise do deleteBook
@@ -62,9 +75,18 @@ function Book (props) {
           </div> */}
         </div>
         <footer className="card-footer">
-          <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
+          {
+            props.favourites === true
+              ? <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p> 
+              : <>
+                <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
+                <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
+                <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p>
+              </>
+          }
+          {/* <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
           <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
-          <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p>
+          <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p> */}
         </footer>
       </div>
     </>

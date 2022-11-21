@@ -187,7 +187,7 @@ export function updateBookThunk (id, book) {
   }
 }
 
-// ********** FAVOURITES *********** //
+// ********** FAVOURITES ********************************************** //
 
 export function getFavourites () {
   return (dispatch) => {
