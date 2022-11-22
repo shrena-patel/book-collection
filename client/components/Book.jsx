@@ -21,13 +21,6 @@ function Book (props) {
 
   const handleAddBookToFavourites = () => {
     // Check if the book already exist in the favouritesReducer
-    // allFavouriteBooks.forEach(favBook => {
-    //   if (favBook.title !== book.title) {
-
-    //   } else {
-    //     console.log('already added')
-    //   }
-    // })
     let matchFound = false
     allFavouriteBooks.forEach(favBook => {
       if (favBook.title === book.title) {
