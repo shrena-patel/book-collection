@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 20px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //font-family: 'Montserrat', sans-serif;
 }
 
 .bookImage {
@@ -127,6 +128,10 @@ input[type=text] {
 a.navbar-item:hover {
   color: #4e6a4a;
 }
+
+// .button.is-primary:focus:not(:active) {
+//   box-shadow: none;
+// }
 
 a.navbar-item:focus {
   color: #98b993;

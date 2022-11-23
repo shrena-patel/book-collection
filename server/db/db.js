@@ -10,7 +10,7 @@ const connection = knex(config[env])
 // const connection = require('knex')(config)
 
 function getBooks (db = connection) {
-  return db('books').select()
+  return db('books').select().orderBy('id')
 }
 
 function getBookById (id, db = connection) {

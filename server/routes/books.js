@@ -50,6 +50,43 @@ router.patch('/:id', (req, res) => {
     })
 })
 
+router.patch('/:id', (req, res) => {
+  // req.body is the body of the api request from the client side
+  const bookUpdate = req.body
+  const bookId = req.params.id
+  console.log(bookId)
+  console.log(bookUpdate)
+  db.updateBook(bookId, bookUpdate)
+    .then(() => {
+      return db.getBooks()
+    })
+    .then(updatedBooks => {
+      res.json(updatedBooks)
+      return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  db.deleteBookFromFavourites(id)
+    .then(() => {
+      // this db.getFavourites() needs to be inside the .then
+      // otherwise both the db function will run at the same time creating a race condition
+      // so we want to do the delete, THEN the getFavourites
+      return db.getFavourites()
+    })
+    .then(updatedBooks => {
+      res.json(updatedBooks)
+      return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
 router.get('/book/:id', (req, res) => {
   const bookId = Number(req.params.id)
   db.getBookById(bookId)
