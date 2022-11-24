@@ -1,10 +1,12 @@
 import { useDispatch } from 'react-redux'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { updateBookThunk } from '../actions'
 
 function EditBook (props) {
   const dispatch = useDispatch()
   const bookToEdit = props.book
+
+  const submitButtonRef = useRef(null)
 
   const [newBook, setNewBook] = useState({
     title: bookToEdit.title,
@@ -33,12 +35,21 @@ function EditBook (props) {
   useEffect(() => {
   }, [newBook])
 
+  // const handleButtonTitle = () => {
+  //   if (bookToEdit === newBook) {
+  //     console.log('thesame')
+  //     //submitButtonRef.current = 'close'
+  //   } else {
+  //     console.log('different')
+  //   } 
+  // }
+
   return (
     <>
       <div className="card">
         <div className="card-image add-book">
           {/* <FontAwesomeIcon icon={faPlus} size='3x' className='icon' /> */}
-          <p className="title is-4">Edit a book</p>
+          {/* <p className="title is-4">Edit book</p> */}
         </div>
         <div className="card-content">
           <div className="media">

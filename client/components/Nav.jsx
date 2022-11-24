@@ -2,10 +2,13 @@ import React, { useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBook, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import AddBook from './AddBook'
 
 function Nav () {
   const menuRef = useRef(null)
   const burgerRef = useRef(null)
+  const modalRef = useRef(null)
+  const closeModalRef = useRef(null)
 
   const handleToggleMenu = () => {
     if (menuRef.current.style.display !== 'block') {
@@ -20,6 +23,17 @@ function Nav () {
       menuRef.current.style.display = 'none'
     }
   }
+
+  const handleModal = () => {
+    const modalClassNames = modalRef.current.className
+    console.log(modalClassNames.includes('boo'), 'MODAL')
+    if (!modalClassNames.includes('is-active')) {
+      modalRef.current.className = 'modal is-active'
+    } else {
+      modalRef.current.className = 'modal'
+    }
+  }
+
   return (
     <>
       <nav className="navbar is-transparent">
@@ -36,9 +50,11 @@ function Nav () {
         <div ref={menuRef} id="navbarExampleTransparentExample" className="navbar-menu">
           <div className="navbar-start">
             <Link to='/' className='navbar-item' onClick={hideMenu}>Home</Link>
-            <Link to='/addbook' className='navbar-item' onClick={hideMenu}>Add book</Link>
+            {/* <Link to='/addbook' className='navbar-item' onClick={hideMenu}>Add book</Link> */}
+            <p className='navbar-item js-modal-trigger' data-target="modal-js-example" onClick={handleModal}>Add book</p>
+         
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link" href="https://bulma.io/documentation/overview/start/">
+              <a className="navbar-link" href="">
           Filter books
               </a>
               <div className="navbar-dropdown is-boxed">
@@ -74,11 +90,24 @@ function Nav () {
                     <span>Borrow a book</span>
                   </a>
                 </p>
+                {/* <button className="js-modal-trigger button is-primary" data-target="modal-js-example" onClick={handleModal}>
+                  Open JS example modal
+                </button> */}
               </div>
             </div>
           </div>
         </div>
       </nav>
+      <div id="modal-js-example" className="modal" ref={modalRef}>
+        <div className="modal-background"></div>
+        <div className="modal-content">
+          <div className="box">
+            <AddBook/>
+            {/* <!-- Your content --> */}
+          </div>
+        </div>
+        <button className="modal-close is-large" aria-label="close" onClick={handleModal}></button>
+      </div>
     </>
   )
 }
