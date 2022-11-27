@@ -43,22 +43,22 @@ function AddBook () {
   }, [newBook])
   return (
     <>
-      <div className="card">
+      <div className="card add-book-card">
         <div className="card-image add-book">
-          <FontAwesomeIcon icon={faPlus} size='3x' className='icon' />
+          {/* <FontAwesomeIcon icon={faPlus} size='3x' className='icon' /> */}
           <p className="title is-4">Add a book</p>
         </div>
         <div className="card-content">
           <div className="media">
             <form onSubmit={handleSubmit} className="book-form">
-              <label htmlFor='title'></label>
-              <input id="title" name="title" type="text" placeholder="Title" onChange={handleChange}></input>
-              <label htmlFor='author'></label>
-              <input id="author" name="author" type="text" placeholder="Author" onChange={handleChange}></input>
-              <label htmlFor='year_released'></label>
-              <input id="year_released" name="year_released" type="text" placeholder="Release year" onChange={handleChange}></input>
-              <label htmlFor='isbn'></label>
-              <input id="isbn" name="isbn" type="text" placeholder="ISBN" onChange={handleChange}></input>
+              <label htmlFor='title'>Title</label>
+              <input id="title" name="title" type="text" onChange={handleChange}></input>
+              <label htmlFor='author'>Author</label>
+              <input id="author" name="author" type="text" onChange={handleChange}></input>
+              <label htmlFor='year_released'>Publication year</label>
+              <input id="year_released" name="year_released" type="text" onChange={handleChange}></input>
+              <label htmlFor='isbn'>ISBN</label>
+              <input id="isbn" name="isbn" type="text" onChange={handleChange}></input>
               <button className="submit-button">Submit</button>
             </form>
           </div>

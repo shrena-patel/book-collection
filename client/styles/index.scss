@@ -63,9 +63,22 @@ body {
   margin-top: 1em;
 }
 
+.add-book-card {
+  width: 31em;
+  box-shadow: none;
+}
+
 .book-form {
   display: flex;
   flex-direction: column;
+  width: 28em;
+
+  label {
+    margin-bottom: -0.75em;
+    margin-top: 0.75em;
+    font-weight: 500;
+    color: #4e6a4a;
+  }
 }
 
 input[type=text] {
@@ -131,6 +144,7 @@ a.navbar-item:hover {
 
 .navbar-item {
   cursor: pointer;
+  font-size: 16px;
 
   &:hover {
     color: #4e6a4a;

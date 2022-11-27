@@ -1,12 +1,13 @@
 import { useDispatch } from 'react-redux'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { updateBookThunk } from '../actions'
 
 function EditBook (props) {
   const dispatch = useDispatch()
   const bookToEdit = props.book
 
-  const submitButtonRef = useRef(null)
+  // TODO: have the submit button on editbook either say 'close' or submit
+  // const submitButtonRef = useRef(null)
 
   const [newBook, setNewBook] = useState({
     title: bookToEdit.title,
@@ -41,7 +42,7 @@ function EditBook (props) {
   //     //submitButtonRef.current = 'close'
   //   } else {
   //     console.log('different')
-  //   } 
+  //   }
   // }
 
   return (

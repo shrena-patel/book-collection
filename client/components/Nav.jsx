@@ -8,7 +8,7 @@ function Nav () {
   const menuRef = useRef(null)
   const burgerRef = useRef(null)
   const modalRef = useRef(null)
-  const closeModalRef = useRef(null)
+  // const closeModalRef = useRef(null)
 
   const handleToggleMenu = () => {
     if (menuRef.current.style.display !== 'block') {
@@ -26,7 +26,7 @@ function Nav () {
 
   const handleModal = () => {
     const modalClassNames = modalRef.current.className
-    console.log(modalClassNames.includes('boo'), 'MODAL')
+    // console.log(modalClassNames.includes('boo'), 'MODAL')
     if (!modalClassNames.includes('is-active')) {
       modalRef.current.className = 'modal is-active'
     } else {
@@ -52,7 +52,6 @@ function Nav () {
             <Link to='/' className='navbar-item' onClick={hideMenu}>Home</Link>
             {/* <Link to='/addbook' className='navbar-item' onClick={hideMenu}>Add book</Link> */}
             <p className='navbar-item js-modal-trigger' data-target="modal-js-example" onClick={handleModal}>Add book</p>
-         
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link" href="">
           Filter books
