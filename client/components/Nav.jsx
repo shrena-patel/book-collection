@@ -34,6 +34,10 @@ function Nav () {
     }
   }
 
+  // const closeModalProp = () => {
+  //   console.log('close modal success')
+  // }
+
   return (
     <>
       <nav className="navbar is-transparent">

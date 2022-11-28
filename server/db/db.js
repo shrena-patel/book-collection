@@ -54,12 +54,6 @@ function deleteBookFromFavourites (id, db = connection) {
     .delete()
 }
 
-function updateFavouriteBook (id, updateBook, db = connection) {
-  return db('favourites')
-    .update(updateBook)
-    .where('id', id)
-}
-
 module.exports = {
   getBooks,
   getBookById,
@@ -68,6 +62,5 @@ module.exports = {
   updateBook,
   getFavourites,
   addBookToFavourites,
-  deleteBookFromFavourites,
-  updateFavouriteBook
+  deleteBookFromFavourites
 }

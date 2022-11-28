@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { addBook } from '../actions'
 
-function AddBook () {
+function AddBook (props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -28,6 +26,7 @@ function AddBook () {
     evt.preventDefault()
     dispatch(addBook(newBook))
     handleResetForm()
+    console.log('close form')
     navigate('/')
   }
 
@@ -45,7 +44,6 @@ function AddBook () {
     <>
       <div className="card add-book-card">
         <div className="card-image add-book">
-          {/* <FontAwesomeIcon icon={faPlus} size='3x' className='icon' /> */}
           <p className="title is-4">Add a book</p>
         </div>
         <div className="card-content">

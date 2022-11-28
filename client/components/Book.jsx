@@ -1,6 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { deleteBookThunk, addBookToFavouritesThunk, deleteBookFromFavouritesThunk } from '../actions'
 
 function Book (props) {
@@ -41,11 +43,6 @@ function Book (props) {
     props.favourites ? dispatch(deleteBookFromFavouritesThunk(book.id)) : dispatch(deleteBookThunk(book.id))
   }
 
-  // const handleEditBook = () => {
-  //   // props.editBookFunc is being passed up to the Books component
-  //   props.favourites
-  // }
-
   return (
     <>
       <div className="card">
@@ -53,6 +50,9 @@ function Book (props) {
           <figure className="image is-4by3">
             <img src={bookCoverUrl} alt="placeholder book image" />
           </figure>
+          <span className="icon">
+            <FontAwesomeIcon icon={faHeart} />
+          </span>
         </div>
         <div className="card-content">
           <div className="media">
