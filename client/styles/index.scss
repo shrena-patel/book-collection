@@ -26,9 +26,39 @@ body {
   justify-content: center;
 }
 
+.card-image {
+  icon {
+    padding-right: 1.5em;
+    padding-top: 1.5em;
+    color: #98b993;
+  }
+  svg {
+    z-index: 1;
+    font-size: 25px;
+    padding-top: 0.6em;
+    padding-right: 0.75em;
+    color: #98b993;
+  
+  &:hover {
+    color: #4e6a4a;
+    cursor: pointer;
+  }
+  }
+}
+
+.navbar-item {
+  .icon {
+    color: #98b993;
+  }
+}
+
+.image {
+  position: unset;
+}
+
 .card {
   margin: 1.5em;
-  width: 14em;
+  width: 12em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -48,10 +78,16 @@ body {
 }
 
 .card-image:first-child img {
-  max-width: 105px;
+  // max-width: 105px;
+  // display: flex;
+  // left: 23%;
+ // border-radius: 0.25rem;
+  height: 236px;
+}
+
+.card-image {
   display: flex;
-  left: 23%;
-  border-radius: 0.25rem;
+  justify-content: space-between;
 }
 
 .add-book {
@@ -112,9 +148,10 @@ input[type=text] {
   background-color: #4e6a4a;
 }
 
-.icon {
-  color: #98b993;
-}
+// .icon {
+//   padding-right: 1.5em;
+//   padding-top: 1.5em;
+// }
 
 // .icon:hover {
 //   color:  #4e6a4a;

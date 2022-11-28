@@ -50,9 +50,12 @@ function Book (props) {
           <figure className="image is-4by3">
             <img src={bookCoverUrl} alt="placeholder book image" />
           </figure>
-          <span className="icon">
-            <FontAwesomeIcon icon={faHeart} />
-          </span>
+          {
+            !props.favourites ? <span className="icon" onClick={handleAddBookToFavourites}>
+              <FontAwesomeIcon icon={faHeart} />
+            </span>
+              : null
+          }
         </div>
         <div className="card-content">
           <div className="media">
@@ -72,14 +75,11 @@ function Book (props) {
             props.favourites === true
               ? <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p>
               : <>
-                <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
+                {/* <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p> */}
                 <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
                 <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p>
               </>
           }
-          {/* <p className="card-footer-item" onClick={handleAddBookToFavourites}>Like</p>
-          <p className="card-footer-item" onClick={props.editBookFunc}>Edit</p>
-          <p className="card-footer-item" onClick={handleDeleteBook}>Delete</p> */}
         </footer>
       </div>
     </>
