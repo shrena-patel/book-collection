@@ -37,13 +37,17 @@ body {
     font-size: 25px;
     padding-top: 0.6em;
     padding-right: 0.75em;
-    color: #98b993;
+    color: #ffffff;
   
   &:hover {
     color: #4e6a4a;
     cursor: pointer;
   }
   }
+}
+
+.card-content {
+  padding: 0rem 1.5rem;
 }
 
 .navbar-item {
@@ -58,10 +62,11 @@ body {
 
 .card {
   margin: 1.5em;
-  width: 12em;
+  width: 13em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 21.25em;
 }
 
 .infoCard {
@@ -70,6 +75,9 @@ body {
 
 .card-footer-item {
   color: #4e6a4a;
+  font-weight: 200;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 
   &:hover {
     cursor: pointer;
@@ -82,7 +90,8 @@ body {
   // display: flex;
   // left: 23%;
  // border-radius: 0.25rem;
-  height: 236px;
+  height: 258px;
+  opacity: 0.8
 }
 
 .card-image {
@@ -158,7 +167,7 @@ input[type=text] {
 // }
 
 .iconBook {
-  color: white;
+  color: white !important;
 }
 
 .title.is-4 {
@@ -167,7 +176,7 @@ input[type=text] {
 }
 
 .navbar {
-  padding-bottom: 3em;
+  padding-bottom: 1em;
 }
 
 .navbar-link:not(.is-arrowless)::after {

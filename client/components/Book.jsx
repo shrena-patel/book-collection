@@ -43,33 +43,41 @@ function Book (props) {
     props.favourites ? dispatch(deleteBookFromFavouritesThunk(book.id)) : dispatch(deleteBookThunk(book.id))
   }
 
+  // let isBookUrlBlankImage
+
+  // if (bookCoverUrl.includes('9781473684065')) {
+  // }
+
   return (
     <>
       <div className="card">
         <div className="card-image">
           <figure className="image is-4by3">
-            <img src={bookCoverUrl} alt="placeholder book image" />
+            <Link to={`/book/${book.id}`}><img src={bookCoverUrl} alt="placeholder book image" /></Link>
           </figure>
           {
             !props.favourites ? <span className="icon" onClick={handleAddBookToFavourites}>
               <FontAwesomeIcon icon={faHeart} />
+              {/* <FontAwesomeIcon icon="fa-thin fa-heart" /> */}
             </span>
               : null
           }
         </div>
-        <div className="card-content">
-          <div className="media">
-            <div className="media-content">
-              <Link to={`/book/${book.id}`}> <p className="title is-4">{book.title}</p></Link>
-              <p className="subtitle is-6">{book.author}</p>
-            </div>
-          </div>
-          {/* <div className="content">
+        {bookCoverUrl.includes('9781473684065') &&
+         <div className="card-content">
+           <div className="media">
+             <div className="media-content">
+               <Link to={`/book/${book.id}`}> <p className="title is-4">{book.title}</p></Link>
+               <p className="subtitle is-6">{book.author}</p>
+             </div>
+           </div>
+           {/* <div className="content">
             <time dateTime="2016-1-1">
               Release year: {book.year_released}
             </time>
           </div> */}
-        </div>
+         </div>
+        }
         <footer className="card-footer">
           {
             props.favourites === true
