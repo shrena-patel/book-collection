@@ -9,7 +9,6 @@ function Book (props) {
   const book = props.data
   const dispatch = useDispatch()
 
-  // favourites reducer is only populated when you go to the favourites page, until then it's empty
   const allFavouriteBooks = useSelector(state => state.favouritesReducer)
 
   let bookCoverUrl = null
@@ -21,8 +20,8 @@ function Book (props) {
     bookCoverUrl = book.cover
   }
 
+  // Check if the book already exist in the favouritesReducer
   const handleAddBookToFavourites = () => {
-    // Check if the book already exist in the favouritesReducer
     let matchFound = false
     allFavouriteBooks.forEach(favBook => {
       if (favBook.title === book.title) {
@@ -53,7 +52,7 @@ function Book (props) {
       <div className="card">
         <div className="card-image">
           <figure className="image is-4by3">
-            <Link to={`/book/${book.id}`}><img src={bookCoverUrl} alt="placeholder book image" /></Link>
+            <Link to={`/book/${book.id}`}><img src={bookCoverUrl} alt="book cover" /></Link>
           </figure>
           {
             !props.favourites ? <span className="icon" onClick={handleAddBookToFavourites}>

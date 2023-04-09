@@ -76,9 +76,8 @@ body {
 
 .card-footer-item {
   color: #4e6a4a;
-  font-weight: 300;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 
   &:hover {
     cursor: pointer;
@@ -93,7 +92,6 @@ body {
   // left: 23%;
  // border-radius: 0.25rem;
   height: 258px;
-  opacity: 0.8
 }
 
 .card-image {
@@ -116,6 +114,10 @@ body {
   width: 31em;
   box-shadow: none;
   margin-bottom: 5em;
+}
+
+.button:focus {
+  border-color: #98b993;
 }
 
 .book-form {
@@ -184,7 +186,7 @@ input[type=text] {
 }
 
 .navbar {
-  padding-bottom: 1em;
+  padding-bottom: 3em;
 }
 
 .navbar-link:not(.is-arrowless)::after {
