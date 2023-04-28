@@ -25,6 +25,7 @@ function Nav () {
 
   const handleModal = () => {
     const modalClassNames = modalRef.current.className
+    console.log(modalRef.current)
     if (!modalClassNames.includes('is-active')) {
       modalRef.current.className = 'modal is-active'
     } else {
@@ -37,7 +38,7 @@ function Nav () {
       <nav className="navbar is-transparent">
         <div className="navbar-brand">
           <Link to='/' className="navbar-item">
-            <p className="subtitle is-3">books.</p>
+            <h1 className="subtitle is-3">books.</h1>
           </Link>
           <div ref={burgerRef} className="navbar-burger" data-target="navbarExampleTransparentExample" onClick={handleToggleMenu}>
             <span></span>
@@ -49,7 +50,7 @@ function Nav () {
           <div className="navbar-start">
             <Link to='/' className='navbar-item' onClick={hideMenu}>Home</Link>
             <p className='navbar-item js-modal-trigger' data-target="modal-js-example" onClick={handleModal}>Add book</p>
-            <div className="navbar-item has-dropdown is-hoverable">
+            {/* <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link" href="">
           Filter books
               </a>
@@ -61,7 +62,7 @@ function Nav () {
             Reading list
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="navbar-end">
