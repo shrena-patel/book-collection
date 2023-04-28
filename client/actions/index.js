@@ -10,7 +10,7 @@ export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
 export const RECEIVE_FAVOURITES = 'RECEIVE_FAVOURITES'
 export const DEL_FROM_FAVOURITES = 'DEL_FROM_FAVOURITES'
 export const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES'
-// add SHOW_ERROR action and add into catch of thunks
+// add SHOW_ERROR action and add into catch of thunks (instead of console.logs)
 // ACTIONS ****************************************** //
 
 export function receiveBooks (arr) {
