@@ -240,3 +240,11 @@ a.navbar-item:focus {
   transition: opacity 1s ease-in;
   opacity: 1;
 }
+
+.field.is-grouped {
+  flex-wrap: wrap;
+}
+
+.field.is-grouped>.control:not(:last-child) {
+  margin-bottom: 1em;
+}
