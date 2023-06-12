@@ -20,16 +20,16 @@ function BookInfo () {
 
   return (
     <>
-      <div className="card infoCard">
-        <div className="card-content">
-          <div className="content">
-            <h1 className="title is-4">{bookById?.title}</h1>
-            <p className="subtitle is-6">By {bookById?.author}</p>
-            <img src={bookById?.cover}/>
-          </div>
-          <p>Add a review:</p>
-          <input type="text"></input><button className="submitButton" type="submit">Submit</button>
-        </div>
+      <div className="infoCard">
+        {/* <div className="card-content"> */}
+        {/* <div className="content"> */}
+        <h1 className="title is-4">{bookById?.title}</h1>
+        <p className="subtitle is-6">By {bookById?.author}</p>
+        <img src={bookById?.cover}/>
+        {/* </div> */}
+        <p className="infoCardText">Add a review:</p>
+        <input type="text"></input><button className="submitButton" type="submit">Submit</button>
+        {/* </div> */}
       </div>
     </>
   )
