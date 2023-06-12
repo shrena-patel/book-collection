@@ -46,7 +46,7 @@ function Book (props) {
 
   // if (bookCoverUrl.includes('9781473684065')) {
   // }
-
+  console.log(bookCoverUrl, 'bookcoverurl')
   return (
     <>
       <div className="card">
@@ -57,12 +57,11 @@ function Book (props) {
           {
             !props.favourites ? <span className="icon" onClick={handleAddBookToFavourites}>
               <FontAwesomeIcon icon={faHeart} />
-              {/* <FontAwesomeIcon icon="fa-thin fa-heart" /> */}
             </span>
               : null
           }
         </div>
-        {bookCoverUrl.includes('9781473684065') &&
+        {bookCoverUrl.includes('no image found') &&
          <div className="card-content">
            <div className="media">
              <div className="media-content">
@@ -77,6 +76,10 @@ function Book (props) {
           </div> */}
          </div>
         }
+        <div className="hidden-title">
+          <p className="title is-4">{book.title}</p>
+          <p className="subtitle is-6">{book.author}</p>
+        </div>
         <footer className="card-footer">
           {
             props.favourites === true
