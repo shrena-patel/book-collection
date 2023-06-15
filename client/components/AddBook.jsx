@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { addBook } from '../actions'
+import { addBook } from '../actions/books'
 
 function AddBook (props) {
   const dispatch = useDispatch()

@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { deleteBookThunk, addBookToFavouritesThunk, deleteBookFromFavouritesThunk } from '../actions'
+import { deleteBookThunk } from '../actions/books'
+import { addBookToFavouritesThunk, deleteBookFromFavouritesThunk } from '../actions/favourites'
 
 function Book (props) {
   const book = props.data

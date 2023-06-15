@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import React, { useState, useEffect } from 'react'
-import { updateBookThunk } from '../actions'
+import { updateBookThunk } from '../actions/books'
 
 function EditBook (props) {
   const dispatch = useDispatch()

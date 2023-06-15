@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getBooks, getFavourites } from '../actions'
+import { getBooks } from '../actions/books'
+import { getFavourites } from '../actions/favourites'
 import Book from './Book'
 import EditBook from './EditBook'
 

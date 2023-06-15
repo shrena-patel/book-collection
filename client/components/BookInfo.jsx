@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { addBookReview, getBookById } from '../actions'
+import { addBookReview, getBookById } from '../actions/books'
 
 // THIS COMPONENT:
 // Renders a view of individual books, their info, and eventually their reviews
 
-function BookInfo() {
+function BookInfo () {
   const dispatch = useDispatch()
   const { id } = useParams()
 

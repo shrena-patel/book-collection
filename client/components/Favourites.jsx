@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getFavourites } from '../actions'
+import { getFavourites } from '../actions/favourites'
 import Book from '../components/Book'
 
 function Favourites () {

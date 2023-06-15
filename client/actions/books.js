@@ -1,4 +1,4 @@
-import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, fetchFavourites, addBookToFavouritesApi, updateBookApi, deleteBookFromFavouritesApi, fetchBookById } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, updateBookApi, fetchBookById } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 export const RECEIVE_BOOK = 'RECEIVE_BOOK'
@@ -8,11 +8,7 @@ export const UPDATE_BOOK = 'UPDATE_BOOK'
 export const RECEIVE_COVER = 'RECEIVE_COVER'
 export const UPDATE_COVER = 'UPDATE_COVER'
 export const ADD_REVIEW = 'ADD_REVIEW'
-export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
-export const RECEIVE_FAVOURITES = 'RECEIVE_FAVOURITES'
-export const DEL_FROM_FAVOURITES = 'DEL_FROM_FAVOURITES'
-export const UPDATE_FAVOURITES = 'UPDATE_FAVOURITES'
-// add SHOW_ERROR action and add into catch of thunks (instead of console.logs)
+
 // ACTIONS ****************************************** //
 
 export function receiveBooks (arr) {
@@ -75,29 +71,7 @@ export function addBookReview (id, review) {
   }
 }
 
-export function receiveFavourites (arr) {
-  return {
-    type: RECEIVE_FAVOURITES,
-    favourites: arr || null
-  }
-}
-export function addBookToFavourites (book) {
-  return {
-    type: ADD_TO_FAVOURITES,
-    book
-  }
-}
-
-export function deleteBookFromFavourites (id) {
-  return {
-    type: DEL_FROM_FAVOURITES,
-    id
-  }
-}
-
 // THUNKS ************************************************** //
-
-// ********** BOOKS *********** //
 
 export function getBooks () {
   return (dispatch) => {
@@ -200,47 +174,6 @@ export function updateBookThunk (id, book) {
       .then(res => {
         console.log(res)
         dispatch(receiveBooks(res))
-        return null
-      })
-      .catch(err => {
-        return err.status(500).send(err.message)
-      })
-  }
-}
-
-// ********** FAVOURITES ********************************************** //
-
-export function getFavourites () {
-  return (dispatch) => {
-    fetchFavourites()
-      .then(res => {
-        dispatch(receiveFavourites(res))
-        return null
-      })
-      .catch(err => {
-        return err.status(500).send(err.message)
-      })
-  }
-}
-
-export function addBookToFavouritesThunk (book) {
-  return (dispatch) => {
-    addBookToFavouritesApi(book)
-      .then(result => {
-        dispatch(addBookToFavourites(result))
-        return null
-      })
-      .catch(err => {
-        return err.status(500).send(err.message)
-      })
-  }
-}
-
-export function deleteBookFromFavouritesThunk (id) {
-  return (dispatch) => {
-    deleteBookFromFavouritesApi(id)
-      .then(results => {
-        dispatch(receiveFavourites(results))
         return null
       })
       .catch(err => {
