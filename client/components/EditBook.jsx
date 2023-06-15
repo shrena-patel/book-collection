@@ -34,16 +34,18 @@ function EditBook (props) {
   }
 
   useEffect(() => {
+    // handleButtonTitle()
   }, [newBook])
 
   // const handleButtonTitle = () => {
   //   if (bookToEdit === newBook) {
   //     console.log('thesame')
-  //     //submitButtonRef.current = 'close'
+  //     submitButtonRef.current = 'close'
   //   } else {
   //     console.log('different')
   //   }
   // }
+  // have 'Close' on the button to begin with, then when the state changes, change to 'submit
 
   return (
     <>

@@ -42,11 +42,6 @@ function Book (props) {
     props.favourites ? dispatch(deleteBookFromFavouritesThunk(book.id)) : dispatch(deleteBookThunk(book.id))
   }
 
-  // let isBookUrlBlankImage
-
-  // if (bookCoverUrl.includes('9781473684065')) {
-  // }
-  console.log(bookCoverUrl, 'bookcoverurl')
   return (
     <>
       <div className="card">

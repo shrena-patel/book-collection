@@ -10,15 +10,11 @@ function Books () {
 
   useEffect(() => {
     dispatch(getBooks())
-    // Added the below in to try and get functionality working
-    // where if a book already exists in the favouritesreducer, don't try and add it
-    // favourites weren't showing up on the books page initially
     dispatch(getFavourites())
   }, [])
 
   const [isEdit, setIsEdit] = useState(null)
   const editBook = (id) => {
-    // TODO: also add a smoother transition for switching of cards
     setIsEdit(id)
   }
 

@@ -1,11 +1,13 @@
-import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, fetchFavourites, addBookToFavouritesApi, updateBookApi, deleteBookFromFavouritesApi } from '../apis'
+import { fetchBooks, addNewBook, deleteBookApi, getBookCoverImage, fetchFavourites, addBookToFavouritesApi, updateBookApi, deleteBookFromFavouritesApi, fetchBookById } from '../apis'
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
+export const RECEIVE_BOOK = 'RECEIVE_BOOK'
 export const ADD_BOOK = 'ADD_BOOK'
 export const DEL_BOOK = 'DEL_BOOK'
 export const UPDATE_BOOK = 'UPDATE_BOOK'
 export const RECEIVE_COVER = 'RECEIVE_COVER'
 export const UPDATE_COVER = 'UPDATE_COVER'
+export const ADD_REVIEW = 'ADD_REVIEW'
 export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
 export const RECEIVE_FAVOURITES = 'RECEIVE_FAVOURITES'
 export const DEL_FROM_FAVOURITES = 'DEL_FROM_FAVOURITES'
@@ -17,6 +19,13 @@ export function receiveBooks (arr) {
   return {
     type: RECEIVE_BOOKS,
     books: arr || null
+  }
+}
+
+export function receiveBook (oneBook) {
+  return {
+    type: RECEIVE_BOOK,
+    book: oneBook || null
   }
 }
 
@@ -58,6 +67,14 @@ export function updateBookCoverAction (id, cover) {
   }
 }
 
+export function addBookReview (id, review) {
+  return {
+    type: ADD_REVIEW,
+    id: id,
+    review: review || null
+  }
+}
+
 export function receiveFavourites (arr) {
   return {
     type: RECEIVE_FAVOURITES,
@@ -90,7 +107,19 @@ export function getBooks () {
         return null
       })
       .catch(err => {
-        console.log(err.message)
+        return err.status(500).send(err.message)
+      })
+  }
+}
+
+export function getBookById (id) {
+  return (dispatch) => {
+    fetchBookById(id)
+      .then(res => {
+        return dispatch(receiveBook(res))
+      })
+      .catch(err => {
+        return err.status(500).send(err.message)
       })
   }
 }
@@ -103,7 +132,7 @@ export function getBookImageThunk (isbn) {
         return null
       })
       .catch(err => {
-        console.log(err.message)
+        return err.status(500).send(err.message)
       })
   }
 }
@@ -123,11 +152,11 @@ export function addBook (newBook) {
             return null
           })
           .catch(err => {
-            console.log(err.message)
+            return err.status(500).send(err.message)
           })
       })
       .catch(err => {
-        console.log(err.message)
+        return err.status(500).send(err.message)
       })
   }
 }
@@ -160,7 +189,7 @@ export function deleteBookThunk (bookId) {
         return null
       })
       .catch(err => {
-        console.log(err.message)
+        return err.status(500).send(err.message)
       })
   }
 }
@@ -174,7 +203,7 @@ export function updateBookThunk (id, book) {
         return null
       })
       .catch(err => {
-        console.log(err.message)
+        return err.status(500).send(err.message)
       })
   }
 }
@@ -189,7 +218,7 @@ export function getFavourites () {
         return null
       })
       .catch(err => {
-        console.log(err.message)
+        return err.status(500).send(err.message)
       })
   }
 }
@@ -202,7 +231,7 @@ export function addBookToFavouritesThunk (book) {
         return null
       })
       .catch(err => {
-        console.log(err.message)
+        return err.status(500).send(err.message)
       })
   }
 }
@@ -215,7 +244,7 @@ export function deleteBookFromFavouritesThunk (id) {
         return null
       })
       .catch(err => {
-        console.log(err.message)
+        return err.status(500).send(err.message)
       })
   }
 }
